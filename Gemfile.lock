@@ -474,6 +474,10 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
+    view_component (3.10.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     webmock (3.19.1)
@@ -548,6 +552,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 2.2)
   turbo-rails (~> 1.5.0)
   uglifier (~> 4.2)
+  view_component (~> 3.10.0)
   webmock (~> 3.19)
   yaaf (~> 2.2)
 

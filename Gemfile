@@ -22,6 +22,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'stimulus-rails', '~> 1.3.3'
 gem 'tailwindcss-rails', '~> 2.2'
 gem 'turbo-rails', '~> 1.5.0'
+gem 'view_component', '~> 3.10.0'
 gem 'yaaf', '~> 2.2'
 
 group :development, :test do
