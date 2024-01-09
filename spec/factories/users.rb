@@ -36,6 +36,5 @@ FactoryBot.define do
     email    { Faker::Internet.unique.email }
     password { Faker::Internet.password(min_length: 8) }
     username { Faker::Internet.unique.user_name }
-    uid      { Faker::Internet.uuid }
   end
 end

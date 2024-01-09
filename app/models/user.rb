@@ -36,32 +36,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
-  include DeviseTokenAuth::Concerns::User
-
-  validates :uid, uniqueness: { scope: :provider }
-
-  before_validation :init_uid
 
   RANSACK_ATTRIBUTES = %w[id email first_name last_name username sign_in_count current_sign_in_at
-                          last_sign_in_at current_sign_in_ip last_sign_in_ip provider uid
-                          created_at updated_at].freeze
-
-  def self.from_social_provider(provider, user_params)
-    where(provider:, uid: user_params['id']).first_or_create! do |user|
-      user.password = Devise.friendly_token[0, 20]
-      user.assign_attributes user_params.except('id')
-    end
-  end
+                          last_sign_in_at current_sign_in_ip last_sign_in_ip created_at updated_at].freeze
 
   def full_name
     return username if first_name.blank?
 
     "#{first_name} #{last_name}"
-  end
-
-  private
-
-  def init_uid
-    self.uid = email if uid.blank? && provider == 'email'
   end
 end
