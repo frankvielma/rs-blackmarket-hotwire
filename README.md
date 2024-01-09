@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/e68d05bb3eaa630680af/maintainability)](https://codeclimate.com/github/frankvielma/rs-blackmarket-hotwire/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e68d05bb3eaa630680af/test_coverage)](https://codeclimate.com/github/frankvielma/rs-blackmarket-hotwire/test_coverage)
+
 # RS Blackmarket
 ## _The e-commerce platform for Rootstrap employees_
 
