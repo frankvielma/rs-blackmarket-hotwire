@@ -74,7 +74,7 @@ group :test do
   gem 'knapsack', '~> 4.0'
   gem 'octokit', '~> 8.0'
   gem 'parallel_tests', '~> 4.4'
-  gem 'pg_query', '~> 4.2.3'
+  gem 'pg_query', '~> 5.0.0'
   gem 'prosopite', '~> 1.4.2'
   gem 'rspec-openapi', '~> 0.10'
   gem 'rspec-rails', '~> 6.1'
