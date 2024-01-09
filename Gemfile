@@ -34,11 +34,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'actioncable', '~> 7.1.2'
   gem 'better_errors', '~> 2.10'
   gem 'brakeman', '~> 6.1'
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'letter_opener', '~> 1.7'
   gem 'listen', '~> 3.8'
+  gem 'lookbook', '>= 2.2.0'
   gem 'rails_best_practices', '~> 1.20'
   gem 'reek', '~> 6.2'
   gem 'rubocop', '~> 1.59', require: false
