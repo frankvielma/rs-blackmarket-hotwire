@@ -125,17 +125,6 @@ jobs:
         with:
           name: coverage
           path: "coverage/coverage.${{ matrix.ci_node_index }}.json"
-      - name: Merge API Docs from threads
-        env:
-          CI_NODE_INDEX: ${{ matrix.ci_node_index }}
-        if: ${{ env.OPENAPI }}
-        run: bundle exec ./bin/merge-api-docs.rb
-      - name: Upload partial API Docs
-        if: ${{ env.OPENAPI }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: api_docs
-          path: "tmp/openapi${{ matrix.ci_node_index }}.yaml"
   merge_results:
     name: Merge Results
     runs-on: ubuntu-latest
