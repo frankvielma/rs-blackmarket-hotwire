@@ -3,42 +3,27 @@
 source 'https://rubygems.org'
 ruby '~> 3.2.2'
 
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1.2'
 
-gem 'activeadmin', '~> 3.2'
-gem 'active_storage_base64', '~> 3.0.0'
-gem 'aws-sdk-s3', '~> 1.142', require: false
 gem 'bootsnap', '~> 1.17'
-gem 'delayed_job_active_record', '~> 4.1'
-gem 'devise', '~> 4.9'
-gem 'devise_token_auth', '~> 1.2.2'
+gem 'devise', '~> 4.9.3'
 gem 'draper', '~> 4.0', '>= 4.0.1'
-gem 'flipper', '~> 1.1.2'
-gem 'flipper-active_record', '~> 1.1.2'
-gem 'flipper-ui', '~> 1.1.2'
-gem 'jbuilder', '~> 2.10'
-gem 'jsbundling-rails', '~> 1.2'
+gem 'importmap-rails', '~> 2.0.1'
+gem 'jbuilder', '~> 2.11.5'
 gem 'lograge', '~> 0.14'
 gem 'newrelic_rpm', '~> 9.6'
 gem 'oj', '~> 3.16'
 gem 'pagy', '~> 6.2'
 gem 'pg', '~> 1.5'
-gem 'puma', '~> 6.4'
-gem 'pundit', '~> 2.3'
-gem 'rack-cors', '~> 2.0'
-gem 'rswag-api', '~> 2.13.0'
-gem 'rswag-ui', '~> 2.13.0'
-gem 'sass-rails', '~> 6.0.0'
-gem 'sendgrid', '~> 1.2.4'
-gem 'sprockets', '~> 4.2.1'
-gem 'strong_migrations', '~> 1.7'
+gem 'puma', '>= 5.0'
+gem 'redis', '>= 4.0.1'
+gem 'sprockets-rails', '~> 3.4.2'
+gem 'sqlite3', '~> 1.4'
+gem 'stimulus-rails', '~> 1.3.3'
+gem 'tailwindcss-rails', '~> 2.2'
+gem 'turbo-rails', '~> 1.5.0'
+gem 'view_component', '~> 3.10.0'
 gem 'yaaf', '~> 2.2'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
@@ -49,12 +34,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'actioncable', '~> 7.1.2'
   gem 'better_errors', '~> 2.10'
-  gem 'binding_of_caller', '~> 1.0'
   gem 'brakeman', '~> 6.1'
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'letter_opener', '~> 1.7'
   gem 'listen', '~> 3.8'
+  gem 'lookbook', '>= 2.2.0'
   gem 'rails_best_practices', '~> 1.20'
   gem 'reek', '~> 6.2'
   gem 'rubocop', '~> 1.59', require: false
@@ -72,11 +58,9 @@ group :test do
   gem 'faker', '~> 3.2'
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
-  gem 'octokit', '~> 8.0'
   gem 'parallel_tests', '~> 4.4'
   gem 'pg_query', '~> 5.0.0'
   gem 'prosopite', '~> 1.4.2'
-  gem 'rspec-openapi', '~> 0.10'
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
   gem 'selenium-webdriver', '~> 4.16.0'
@@ -88,6 +72,3 @@ end
 group :assets do
   gem 'uglifier', '~> 4.2'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

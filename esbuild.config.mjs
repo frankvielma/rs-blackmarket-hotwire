@@ -1,7 +1,6 @@
 import * as esbuild from 'esbuild'
 
 const config = {
-  entryPoints: ['app/assets/javascripts/*'],
   bundle: true,
   sourcemap: process.env.RAILS_ENV !== 'production',
   minify: process.env.RAILS_ENV === 'production',

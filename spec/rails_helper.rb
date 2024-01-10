@@ -53,9 +53,6 @@ RSpec.configure do |config|
   config.before { Prosopite.scan }
   config.after { Prosopite.finish }
 
-  # Reset previous flipper instance
-  config.before { Flipper.instance = nil }
-
   # rspec-retry gem
   # Show retry status in spec process
   config.verbose_retry = true
@@ -80,8 +77,4 @@ end
 Rails.application.executor.to_complete do
   ActiveStorage::Current.url_options = { host: ENV.fetch('SERVER_HOST', nil),
                                          port: ENV.fetch('PORT', 3000) }
-end
-
-Flipper.configure do |config|
-  config.default { Flipper.new(Flipper::Adapters::Memory.new) }
 end
