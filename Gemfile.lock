@@ -293,7 +293,7 @@ GEM
     oj (3.16.3)
       bigdecimal (>= 3.0)
     orm_adapter (0.5.0)
-    pagy (6.2.0)
+    pagy (6.4.1)
     parallel (1.24.0)
     parallel_tests (4.4.0)
       parallel
@@ -540,7 +540,7 @@ DEPENDENCIES
   lookbook (>= 2.2.0)
   newrelic_rpm (~> 9.7)
   oj (~> 3.16)
-  pagy (~> 6.2)
+  pagy (~> 6.4)
   parallel_tests (~> 4.4)
   pg (~> 1.5)
   pg_query (~> 5.1.0)
