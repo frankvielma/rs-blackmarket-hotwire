@@ -59,7 +59,7 @@ group :test do
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
   gem 'parallel_tests', '~> 4.4'
-  gem 'pg_query', '~> 5.0.0'
+  gem 'pg_query', '~> 5.1.0'
   gem 'prosopite', '~> 1.4.2'
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
