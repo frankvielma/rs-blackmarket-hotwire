@@ -2,12 +2,10 @@
   <div class="h-[366px] max-w-[328px] rounded-lg border-black bg-white px-[34px] md:h-[425px] md:max-w-[360px]">
     <h1 class="sr-only">Login</h1>
     <div class="pb-5 pt-[40px] md:p-[47px] md:pb-7">
-      <%= link_to image_tag("bm_logo.png"), "/" %>
+      <%= link_to image_tag("bm_logo.png", alt: 'Logo'), "/" %>
     </div>
 
-    <%= form_with model: @user, url: '#' do |form| %>
-      <%- #= render "shared/form_errors", form: form %>
-
+    <%= form_with data: { controller: "signin", action: "submit->signin#submit" } do |form| %>
       <div class="my-4 flex flex-col">
         <%= form.label :email, class: "text-sm md:text-base" %>
         <%= form.text_field :email, class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
@@ -15,7 +13,7 @@
       <div class="relative my-4">
         <%= form.label :password, class: "text-sm md:text-base" %>
         <div class="flex flex-col">
-          <%= form.password_field :password, class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
+          <%= form.password_field :password, autocomplete: true, class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
           <%- #= button_to "New", action: "visibility" %>
         </div>
 
@@ -23,11 +21,12 @@
       <div class="flex flex-col">
         <%= form.submit "Log in", class: "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed" %>
       </div>
-    <% end %>
 
     <div class="pt-2 text-red-700 md:pt-4">
-
+      <%- #= render "shared/form_errors", form: form %>
     </div>
+    <% end %>
+
     <div class="pt-2 text-center md:pt-4">
       <%= link_to "I forgot my password.", "forget_my_password", class: "link-focus link-hover link-active mt-10" %>
     </div>
