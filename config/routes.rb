@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'home#index'
 
-  get 'login' => 'users#index', as: :login
+  get 'login' => 'users#login', as: :login
   get 'singup' => 'users#new', as: :sign_up
 
   match '/404', to: 'errors#not_found', via: :all
