@@ -1,9 +1,6 @@
 <div class="flex h-[100vh] flex-col bg-cover bg-center bg-no-repeat px-6 py-16 text-base text-dark-violet md:px-28">
   <div class="h-[496px] max-w-[328px] rounded-lg border-black bg-white px-[34px] md:h-[572px] md:max-w-[360px]">
-    <h1 class="sr-only">Sign Up</h1>
-    <div class="pb-5 pt-[40px] md:p-[47px] md:pb-7">
-      <%= link_to image_tag("bm_logo.png", alt: 'Logo'), "/" %>
-    </div>
+    <%= render(LogoComponent.new(title: 'Sign Up')) %>
 
     <%= form_with data: { controller: "signup", action: "submit->signup#submit" }, id: "signUpForm" do |form| %>
       <div class="my-4 flex flex-col">
