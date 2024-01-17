@@ -100,7 +100,7 @@ export default class extends Controller {
       body: JSON.stringify(
         {
           user: {
-            email: "axel@test.com",
+            email: email,
             password: password,
             password_confirmation: confirm_password
           }
