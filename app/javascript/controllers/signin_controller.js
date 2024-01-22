@@ -13,7 +13,7 @@ export default class extends Controller {
   checkForm = () => {
     if (this.validateEmail() && this.validatePassword()) {
       error.innerText = '';
-      submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer"
+      submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer active:ring-2 active:ring-offset-2 active:outline-none custom-focus hover:bg-hover active:bg-hover"
     }
   }
 
@@ -56,6 +56,7 @@ export default class extends Controller {
 
     fetch('https://rs-blackmarket-api.herokuapp.com/api/v1/users/sign_in', {
       method: 'POST',
+      mode: "cors",
       headers: {
         'Content-Type': 'application/json',
       },
@@ -68,6 +69,9 @@ export default class extends Controller {
         })
     })
     .then(response => {
+      if (response.ok) {
+        signIn(response.headers);
+      }
       return response.json();
     })
     .then(data => {
@@ -76,12 +80,38 @@ export default class extends Controller {
         error.classList.add("visible");
         error.classList.remove("invisible");
       } else {
-        console.log('Success:', data);
-        window.location.href = "/dashboard";
+        console.log('Success!');
       }
     })
     .catch(error => {
       console.error('Error:', error);
     });
+    
   }
+}
+
+function signIn(headers) {
+  const uid  = headers.get('uid');
+  const access_token = headers.get('access-token');
+  const client = headers.get('client');
+  fetch('/sign_in/', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json', 
+      'X-CSRF-Token': document.querySelector("[name='csrf-token']").content 
+    },
+    body: JSON.stringify(
+      {
+        email: uid,
+        access_token: access_token,
+        client: client
+      })
+  })
+    .then(response => response.json())
+    .then(data => {
+      window.location.href = "/dashboard";
+    })
+    .catch(error => {
+      console.log("error = ", error);
+    });
 }
