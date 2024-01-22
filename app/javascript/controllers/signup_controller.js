@@ -1,8 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="signup"
 export default class extends Controller {
-
   connect() {
     const email = document.getElementById("email");
     email.addEventListener("blur", ValidateEmail, true);
@@ -13,15 +12,15 @@ export default class extends Controller {
     const confirm_password = document.getElementById("confirm_password");
     confirm_password.addEventListener("blur", ValidateConfirmPassword, true);
 
-
     const form = document.getElementById("signUpForm");
-    form.addEventListener("input", function() {
-      const error = document.getElementById('error'); 
+    form.addEventListener("input", function () {
+      const error = document.getElementById("error");
       const submitButton = document.getElementById("submitButton");
 
-      submitButton.className = (ValidateEmail() && ValidatePassword() && ValidateConfirmPassword()) 
-      ? "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer"
-      : "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed";
+      submitButton.className =
+        ValidateEmail() && ValidatePassword() && ValidateConfirmPassword()
+          ? "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer active:ring-2 active:ring-offset-2 active:outline-none custom-focus hover:bg-hover active:bg-hover"
+          : "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed";
     });
 
     /**
@@ -33,10 +32,12 @@ export default class extends Controller {
       const emailInput = email.value;
       const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       const isValid = regex.test(emailInput);
-      const error = document.getElementById('error'); 
+      const error = document.getElementById("error");
 
-      error.innerHTML = isValid ? '' : 'Invalid email address.';
-      error.className = isValid ? "invisible text-red-500 text-center" : "visible text-red-500 text-center";
+      error.innerHTML = isValid ? "" : "Invalid email address.";
+      error.className = isValid
+        ? "invisible text-red-500 text-center"
+        : "visible text-red-500 text-center";
       return isValid;
     }
 
@@ -48,10 +49,14 @@ export default class extends Controller {
     function ValidatePassword() {
       const passwordInput = password.value;
       const isValid = passwordInput.length >= 8;
-      const error = document.getElementById('error'); 
+      const error = document.getElementById("error");
 
-      error.innerHTML = isValid ? '' : 'Password must be at least 8 characters long.';
-      error.className = isValid ? "invisible text-red-500 text-center" : "visible text-red-500 text-center";
+      error.innerHTML = isValid
+        ? ""
+        : "Password must be at least 8 characters long.";
+      error.className = isValid
+        ? "invisible text-red-500 text-center"
+        : "visible text-red-500 text-center";
       return isValid;
     }
 
@@ -62,18 +67,24 @@ export default class extends Controller {
      */
     function ValidateConfirmPassword() {
       const confirmPasswordInput = confirm_password.value;
-      const error = document.getElementById('error'); 
+      const error = document.getElementById("error");
 
       const isPasswordLengthValid = confirmPasswordInput.length >= 8;
       const doPasswordsMatch = password.value === confirmPasswordInput;
 
-      error.innerHTML = isPasswordLengthValid ? '' : 'Confirm password must be at least 8 characters long.';
-      error.className = isPasswordLengthValid ? "invisible text-red-500 text-center" : "visible text-red-500 text-center";
+      error.innerHTML = isPasswordLengthValid
+        ? ""
+        : "Confirm password must be at least 8 characters long.";
+      error.className = isPasswordLengthValid
+        ? "invisible text-red-500 text-center"
+        : "visible text-red-500 text-center";
 
-      error.innerHTML = doPasswordsMatch ? '' : 'Passwords do not match.';
-      error.className = doPasswordsMatch ? "invisible text-red-500 text-center" : "visible text-red-500 text-center";
+      error.innerHTML = doPasswordsMatch ? "" : "Passwords do not match.";
+      error.className = doPasswordsMatch
+        ? "invisible text-red-500 text-center"
+        : "visible text-red-500 text-center";
 
-      return isPasswordLengthValid && doPasswordsMatch
+      return isPasswordLengthValid && doPasswordsMatch;
     }
   }
 
@@ -81,7 +92,8 @@ export default class extends Controller {
     event.preventDefault();
 
     const submitButton = document.getElementById("submitButton");
-    const isSubmitDisabled = submitButton.className.includes('cursor-not-allowed')
+    const isSubmitDisabled =
+      submitButton.className.includes("cursor-not-allowed");
 
     if (isSubmitDisabled) {
       return;
@@ -92,34 +104,66 @@ export default class extends Controller {
     const password = form.password.value;
     const confirm_password = form.confirm_password.value;
 
-    fetch('https://rs-blackmarket-api.herokuapp.com/api/v1/users', {
-      method: 'POST',
+    fetch("https://rs-blackmarket-api.herokuapp.com/api/v1/users", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(
-        {
-          user: {
-            email: email,
-            password: password,
-            password_confirmation: confirm_password
-          }
-        })
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+          password_confirmation: confirm_password,
+        },
+      }),
     })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      if (data.status === 'error') {
-        const error = document.getElementById('error'); 
-        error.innerHTML = data.errors.full_messages[0];
-        error.className = "visible text-red-500 text-center";
-      } else {
-        console.log('Success:', data);
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      .then((response) => {
+        if (response.ok) {
+          signOut(response.headers);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.status === "error") {
+          const error = document.getElementById("error");
+          error.innerHTML = data.errors.full_messages[0];
+          error.className = "visible text-red-500 text-center";
+        } else {
+          console.log("Success:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
+}
+
+function signOut(headers) {
+  const uid = headers.get("uid");
+  const access_token = headers.get("access-token");
+  const client = headers.get("client");
+  fetch("/sign_up/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+    },
+    body: JSON.stringify({
+      email: uid,
+      access_token: access_token,
+      client: client,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const error = document.getElementById("error");
+      error.innerHTML = "Account created successfully";
+      error.className = "visible text-blue-500 text-center";
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
+    })
+    .catch((error) => {
+      console.log("error = ", error);
+    });
 }
