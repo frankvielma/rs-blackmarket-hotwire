@@ -28,8 +28,12 @@ export default class extends Controller {
 
   visibility(event) {
     if (password.type === "password") {
+      visibility_off.classList.add('hidden')
+      visibility_on.classList.remove("hidden")
       password.type = "text";
     } else {
+      visibility_on.classList.add('hidden')
+      visibility_off.classList.remove("hidden")
       password.type = "password";
     }
   }
