@@ -2,14 +2,8 @@
   <div class="mx-auto flex h-14 items-center justify-between px-4 lg:h-24">
     <%= link_to image_tag("logo_header.png", alt: "Black Market"), "/" %>
     <div class="hidden lg:block">
-        <input
-        type="text"
-        placeholder="Search for products"
-        class="mr-6 h-10 w-[28.5rem] rounded-md bg-white px-3 py-2 text-black"
-        />
+      <%= render(SearchBarComponent.new()) %>
     </div>
-
     <%= render(DropdownComponent.new()) %>
-
   </div>
 </header>
