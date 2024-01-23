@@ -3,88 +3,62 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="signup"
 export default class extends Controller {
   connect() {
-    const email = document.getElementById("email");
-    email.addEventListener("blur", ValidateEmail, true);
+    this.element.addEventListener("input", this.checkForm)
+  }
 
-    const password = document.getElementById("password");
-    password.addEventListener("blur", ValidatePassword, true);
+  checkForm = () => {
+    if (this.validateEmail() && this.validatePassword() && this.ValidateConfirmPassword()) {
+      error.innerText = '';
+      submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer active:ring-2 active:ring-offset-2 active:outline-none custom-focus hover:bg-hover active:bg-hover"
+    }
+  }
 
-    const confirm_password = document.getElementById("confirm_password");
-    confirm_password.addEventListener("blur", ValidateConfirmPassword, true);
+  validateEmail() {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    const isValid = emailRegex.test(email.value);
+    this.showValidationForTarget('email', isValid)
+    return isValid
+  }
 
-    const form = document.getElementById("signUpForm");
-    form.addEventListener("input", function () {
-      const error = document.getElementById("error");
-      const submitButton = document.getElementById("submitButton");
+  validatePassword() {
+    const isValid = password.value.length >= 8
+    this.showValidationForTarget('password', isValid)
+    return isValid
+  }
 
-      submitButton.className =
-        ValidateEmail() && ValidatePassword() && ValidateConfirmPassword()
-          ? "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer active:ring-2 active:ring-offset-2 active:outline-none custom-focus hover:bg-hover active:bg-hover"
-          : "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed";
-    });
+  ValidateConfirmPassword() {
+    const confirmPasswordInput = confirm_password.value;
+    const isPasswordLengthValid = confirmPasswordInput.length >= 8;
+    const doPasswordsMatch = password.value === confirmPasswordInput;
 
-    /**
-     * Validates an email address.
-     *
-     * @return {boolean} true if the email address is valid, false otherwise
-     */
-    function ValidateEmail() {
-      const emailInput = email.value;
-      const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      const isValid = regex.test(emailInput);
-      const error = document.getElementById("error");
+    this.showValidationForTarget('password', isPasswordLengthValid)
 
-      error.innerHTML = isValid ? "" : "Invalid email address.";
-      error.className = isValid
-        ? "invisible text-red-500 text-center"
-        : "visible text-red-500 text-center";
-      return isValid;
+    error.innerHTML = doPasswordsMatch ? "" : "Passwords do not match.";
+    error.className = doPasswordsMatch
+      ? "invisible text-red-500 text-center"
+      : "visible text-red-500 text-center";
+
+    return isPasswordLengthValid && doPasswordsMatch;
+  }
+
+  showValidationForTarget(target, isValid) {
+    let errorMessage = ''
+
+    if (target === 'email') {
+      errorMessage = "Invalid email address.";
+    }
+    if (target === 'password') {
+      errorMessage = "Password must be at least 8 characters long.";
     }
 
-    /**
-     * Validates the password input and updates the error message accordingly.
-     *
-     * @return {boolean} Returns true if the password is valid, false otherwise.
-     */
-    function ValidatePassword() {
-      const passwordInput = password.value;
-      const isValid = passwordInput.length >= 8;
-      const error = document.getElementById("error");
-
-      error.innerHTML = isValid
-        ? ""
-        : "Password must be at least 8 characters long.";
-      error.className = isValid
-        ? "invisible text-red-500 text-center"
-        : "visible text-red-500 text-center";
-      return isValid;
-    }
-
-    /**
-     * Validates the confirm password input field.
-     *
-     * @return {boolean} Returns true if the password is valid and matches the confirm password.
-     */
-    function ValidateConfirmPassword() {
-      const confirmPasswordInput = confirm_password.value;
-      const error = document.getElementById("error");
-
-      const isPasswordLengthValid = confirmPasswordInput.length >= 8;
-      const doPasswordsMatch = password.value === confirmPasswordInput;
-
-      error.innerHTML = isPasswordLengthValid
-        ? ""
-        : "Confirm password must be at least 8 characters long.";
-      error.className = isPasswordLengthValid
-        ? "invisible text-red-500 text-center"
-        : "visible text-red-500 text-center";
-
-      error.innerHTML = doPasswordsMatch ? "" : "Passwords do not match.";
-      error.className = doPasswordsMatch
-        ? "invisible text-red-500 text-center"
-        : "visible text-red-500 text-center";
-
-      return isPasswordLengthValid && doPasswordsMatch;
+    if (isValid) {
+      error.classList.remove("visible")
+      error.classList.add("invisible")
+    } else {
+      error.innerText = errorMessage;
+      error.classList.add("visible");
+      error.classList.remove("invisible")
+      submitButton.className = "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed";
     }
   }
 
