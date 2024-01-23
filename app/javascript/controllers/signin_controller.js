@@ -2,11 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="signin"
 export default class extends Controller {
-  static targets = ["email", "password"];
-
   connect() {
-    this.emailTarget.addEventListener("blur", this.validateEmail)
-    this.passwordTarget.addEventListener("blur", this.validatePassword)
     this.element.addEventListener("input", this.checkForm)
   }
 
@@ -17,19 +13,27 @@ export default class extends Controller {
     }
   }
 
-  validateEmail = () => {
+  validateEmail() {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    const isValid = emailRegex.test(this.emailTarget.value);
+    const isValid = emailRegex.test(email.value);
     this.showValidationForTarget('email', isValid)
     return isValid
   }
 
-  validatePassword = () => {
-    const isValid = this.passwordTarget.value.length >= 8
+  validatePassword() {
+    const isValid = password.value.length >= 8
     this.showValidationForTarget('password', isValid)
     return isValid
   }
 
+  visibility(event) {
+    if (password.type === "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  }
+   
   showValidationForTarget(target, isValid) {
     let errorMessage = ''
 
