@@ -145,3 +145,6 @@ RSpec/Capybara/FeatureMethods:
   EnabledMethods:
     - feature
     - scenario
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/**/*'
