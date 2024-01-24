@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="signin"
 export default class extends Controller {
   connect() {
-    this.element.addEventListener("input", this.checkForm)
+    this.element.addEventListener("input", this.checkForm);
   }
 
   checkForm = () => {
@@ -26,15 +26,29 @@ export default class extends Controller {
     return isValid
   }
 
-  visibility(event) {
+  findVisibilityOff() {
+    return this.element.querySelectorAll('[class*="visibility_off"]');
+  }
+
+  findVisibilityOn() {
+    return this.element.querySelectorAll('[class*="visibility_on"]');
+  }
+
+  toggleVisibility(event) {
     if (password.type === "password") {
-      visibility_off.classList.add('hidden')
-      visibility_on.classList.remove("hidden")
+      this.findVisibilityOff().forEach(img => img.classList.add('hidden'));
+      this.findVisibilityOn().forEach(img => img.classList.remove('hidden'));
       password.type = "text";
+      if (typeof confirm_password !== "undefined") {
+        confirm_password.type = "text";
+      }
     } else {
-      visibility_on.classList.add('hidden')
-      visibility_off.classList.remove("hidden")
+      this.findVisibilityOff().forEach(img => img.classList.remove('hidden'));
+      this.findVisibilityOn().forEach(img => img.classList.add('hidden'));
       password.type = "password";
+      if (typeof confirm_password !== "undefined") {
+        confirm_password.type = "password";
+      }
     }
   }
    
