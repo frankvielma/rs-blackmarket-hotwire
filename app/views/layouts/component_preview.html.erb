@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Component Preview</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-</head>
-<body style="background-color: white">
-  <div>
-    <%= yield %> 
-  </div>
-</body>
+  <head>
+    <title>Component Preview</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body style="background-color: white">
+    <div>
+      <%= yield %>
+    </div>
+  </body>
 </html>
