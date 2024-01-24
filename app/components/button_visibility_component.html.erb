@@ -1,5 +1,5 @@
-<button class="custom-focus absolute right-4 mt-2 md:mt-4" type="button" id="visibility" data-signin-id-param="123" data-action="signin#visibility" >
+<button class="custom-focus absolute right-4 mt-2 md:mt-4" type="button" data-action="signin#toggleVisibility" >
   <span class="sr-only">Show password</span>
-  <%= image_tag "visibility_on.svg", class: "hidden", id: 'visibility_on' %>
-  <%= image_tag "visibility_off.svg", id: 'visibility_off' %>
+  <%= image_tag "visibility_on.svg", class: "hidden visibility_on", id: 'visibility_on' %>
+  <%= image_tag "visibility_off.svg", class: "visibility_off", id: 'visibility_off' %>
 </button>
