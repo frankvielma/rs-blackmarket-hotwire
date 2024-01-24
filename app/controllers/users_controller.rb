@@ -21,11 +21,12 @@ class UsersController < ApplicationController
   private
 
   def update_create_user(user, params)
-    if user.nil?
-      user = create_user(params)
-    else
-      user.update!(tokens: params[:access_token], client: params[:client])
-    end
+    user.nil? ? create_user(params) : update_user(user, params)
+    user
+  end
+
+  def update_user(user, params)
+    user.update!(tokens: params[:access_token], client: params[:client])
     user
   end
 
