@@ -1,2 +1,6 @@
 <h1 class="sr-only"><%= @title %></h1>
-<%= link_to image_tag("bm_logo.png", alt: "Logo"), "/" %>
+<% if @type === 'black' %>
+  <%= link_to image_tag("bm_logo.png", alt: "Black Market"), "/" %>
+<% elsif @type == 'white' %>
+  <%= link_to image_tag("logo_header.png", alt: "Black Market"), "/" %>
+<% end %>

@@ -1,0 +1,14 @@
+<header class="h-14 w-screen bg-black px-4 lg:h-24">
+  <div class="mx-auto flex h-14 items-center justify-between px-4 lg:h-24">
+    <%= render LogoComponent.new(title: 'Login', type: 'white') %>
+    <div class="hidden lg:block">
+      <%= render(SearchBarComponent.new()) %>
+    </div>
+    <div>
+      <%= render(DropdownComponent.new()) %>
+    </div>
+    <div>
+      <%= render(ShoppingCartComponent.new()) %>
+    </div>
+  </div>
+</header>

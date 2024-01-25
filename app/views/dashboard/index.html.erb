@@ -1,14 +1,4 @@
-<header class="h-14 w-screen bg-black px-4 lg:h-24">
-  <div class="mx-auto flex h-14 items-center justify-between px-4 lg:h-24">
-    <%= link_to image_tag("logo_header.png", alt: "Black Market"), "/" %>
-    <div class="hidden lg:block">
-      <%= render(SearchBarComponent.new()) %>
-    </div>
-    <div>
-      <%= render(DropdownComponent.new()) %>
-    </div>
-    <div>
-      <%= render(ShoppingCartComponent.new()) %>
-    </div>
-  </div>
-</header>
+<%= render(HeaderComponent.new()) %>
+<div id="content" style="background-color:#E0E0E0;height:calc(100vh - 100px)">
+</div>
+<%= render(FooterComponent.new()) %>

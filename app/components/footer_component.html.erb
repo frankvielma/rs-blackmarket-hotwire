@@ -1,0 +1,68 @@
+<footer class="bg-black py-16 text-white">
+  <nav class="mx-auto ml-6 flex flex-wrap justify-between lg:mx-8">
+    <div class="flex flex-col-reverse lg:w-3/4 lg:flex-col">
+      <div class="flex flex-wrap gap-12 sm:gap-24">
+        <nav class="flex flex-col flex-grow">
+          <ul>
+            <li class="mb-4 font-bold text-base sm:text-2xl">Restored furniture</li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/entries">Entries</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/rates">Rates</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/categories">Categories</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/sale">Sale</a></li>
+          </ul>
+        </nav>
+        <nav class="flex flex-col flex-grow">
+          <ul>
+            <li class="mb-4 font-bold text-base sm:text-2xl">Stay connected</li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/instagram">Instagram</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/twitter">Twitter</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/facebook">Facebook</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/linkedin">LinkedIn</a></li>
+          </ul>
+        </nav>
+        <nav class="flex flex-col flex-grow">
+          <ul>
+            <li class="mb-4 font-bold text-base sm:text-2xl">Black Market</li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/history">Our history</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/staff">Staff</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/work">Work with us</a></li>
+          </ul>
+        </nav>
+        <nav class="flex flex-col flex-grow">
+          <ul>
+            <li class="mb-4 font-bold text-base sm:text-2xl">Support</li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/chat">Chat</a></li>
+            <li class="mb-2 text-base sm:text-2xl"><a href="/address">Address</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mb-8 flex justify-between">
+        <div class="mt-8 h-8 w-40 shrink-0 lg:h-8 lg:w-48">
+          <%= render LogoComponent.new(title: 'Login', type: 'white') %>
+        </div>
+        <div class="mt-8 hidden sm:flex">
+          <%= render SocialComponent.new() %>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-base lg:w-1/4">
+      <p class="font-bold lg:text-2xl">
+        Subscribe to our weekly newsletter!
+      </p>
+      <%= form_with data: { controller: "subscribe", action: "submit->subscribe#submit" } do |form| %>
+        <div class="my-4 flex flex-col">
+          <%= form.label :email, class: "text-sm md:text-base" %>
+          <%= form.text_field :email, class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
+        </div>
+        <div class="flex flex-col">
+          <%= form.submit "Subscribe", id: "submitButton", class: "h-[44px] rounded-md text-white w-full bg-black font-bold outline outline-[1px] cursor-not-allowed active:ring-2 active:ring-offset-2 active:outline-none custom-focus" %>
+        </div>
+        <div class="invisible text-red-500 text-center" id="error"></div>
+      <% end %>
+      <p class="mt-2 hidden lg:block lg:text-md">
+        By subscribing you agree to receive weekly emails with our latest
+        news and updates.
+      </p>
+    </div>
+  </nav>
+</footer>
