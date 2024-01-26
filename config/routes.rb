@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'home#index'
 
-  get 'login' => 'users#login'
-  post 'sign_in' => 'users#sign_in'
-  get 'singup' => 'users#new'
-  post 'sign_up' => 'users#sign_up'
-  get 'sign_out' => 'users#sign_out'
+  # get 'login' => 'users#login'
+  # post 'sign_in' => 'users#sign_in'
+  # get 'singup' => 'users#new'
+  # post 'sign_up' => 'users#sign_up'
+  # get 'sign_out' => 'users#sign_out'
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
   match '/404', to: 'errors#not_found', via: :all
