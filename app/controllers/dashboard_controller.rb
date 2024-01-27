@@ -2,10 +2,8 @@
 
 class DashboardController < ApplicationController
   layout 'dashboard'
+  before_action :authenticate_user!
 
   def index
-    return if session[:user_id].present?
-
-    redirect_to login_path
   end
 end
