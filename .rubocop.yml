@@ -22,6 +22,7 @@ AllCops:
     - config/initializers/strong_migrations.rb
     - db/schema.rb
     - node_modules/**/*
+    - config/initializers/devise.rb
 
 Layout/ClassStructure:
   Enabled: true
