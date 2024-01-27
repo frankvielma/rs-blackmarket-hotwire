@@ -4,36 +4,39 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     this.element.addEventListener("input", this.checkForm);
+    submitButton.disabled = true;
   }
 
   checkForm = () => {
-    let isValid = this.validateEmail() && this.validatePassword()
-    if (typeof confirm_password !== "undefined") {
+    let isValid = this.validateEmail() && this.validatePassword();
+    if (typeof user_password_confirmation !== "undefined") {
       isValid = isValid && this.validateConfirmPassword()
     }
     if (isValid) {
       error.innerText = '';
+      submitButton.disabled = false;
+      alertText.classList.add("hidden");
       submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold text-white outline-none cursor-pointer active:ring-2 active:ring-offset-2 active:outline-none custom-focus hover:bg-hover active:bg-hover"
     }
   }
 
   validateEmail() {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    const isValid = emailRegex.test(email.value);
+    const isValid = emailRegex.test(user_email.value);
     this.showValidationForTarget('email', isValid)
     return isValid
   }
 
   validatePassword() {
-    const isValid = password.value.length >= 8
+    const isValid = user_password.value.length >= 8
     this.showValidationForTarget('password', isValid)
     return isValid
   }
 
   validateConfirmPassword() {
-    const confirmPasswordInput = confirm_password.value;
+    const confirmPasswordInput = user_password_confirmation.value;
     const isPasswordLengthValid = confirmPasswordInput.length >= 8;
-    const doPasswordsMatch = password.value === confirmPasswordInput;
+    const doPasswordsMatch = user_password.value === confirmPasswordInput;
 
     this.showValidationForTarget('password', isPasswordLengthValid)
 
@@ -54,19 +57,19 @@ export default class extends Controller {
   }
 
   toggleVisibility(event) {
-    if (password.type === "password") {
+    if (user_password.type === "password") {
       this.findVisibilityOff().forEach(img => img.classList.add('hidden'));
       this.findVisibilityOn().forEach(img => img.classList.remove('hidden'));
-      password.type = "text";
-      if (typeof confirm_password !== "undefined") {
-        confirm_password.type = "text";
+      user_password.type = "text";
+      if (typeof user_password_confirmation !== "undefined") {
+        user_password_confirmation.type = "text";
       }
     } else {
       this.findVisibilityOff().forEach(img => img.classList.remove('hidden'));
       this.findVisibilityOn().forEach(img => img.classList.add('hidden'));
-      password.type = "password";
-      if (typeof confirm_password !== "undefined") {
-        confirm_password.type = "password";
+      user_password.type = "password";
+      if (typeof user_password_confirmation !== "undefined") {
+        user_password_confirmation.type = "password";
       }
     }
   }
