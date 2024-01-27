@@ -3,60 +3,38 @@
     <div class="pb-5 pt-[40px] md:p-[47px] md:pb-7">
       <%= render(LogoComponent.new(title: 'Sign Up')) %>
     </div>
-    <%= form_with data: { controller: "signup validate-form", action: "submit->signup#submit" }, id: "signUpForm" do |form| %>
+    <%= form_for resource, as: resource_name, url: registration_path(resource_name), data: { controller: "validate-form" } do |form| %>
       <div class="my-4 flex flex-col">
         <%= form.label :email, class: "text-sm md:text-base" %>
-        <%= form.text_field :email, class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
       </div>
       <div class="relative my-4">
         <%= form.label :password, class: "text-sm md:text-base" %>
         <div class="flex flex-col">
-          <%= form.password_field :password, autocomplete: true, class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
+          <%= form.password_field :password, autocomplete: "new-password", class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
           <%= render(ButtonVisibilityComponent.new()) %>
         </div>
       </div>
       <div class="relative my-4" >
         <%= form.label :confirm_password, class: "text-sm md:text-base" %>
         <div class="flex flex-col">
-          <%= form.password_field :confirm_password, autocomplete: true, class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
+          <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
           <%= render(ButtonVisibilityComponent.new()) %>
         </div>
       </div>
       <div class="flex flex-col">
         <%= form.submit "Sing up", class: "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed", id: "submitButton" %>
       </div>
-      <div class="invisible text-red-500 text-center", id="error">
-      </div>
+      <div class="invisible text-red-500 text-center" id="error"></div>
+      <p class="alert text-red-500 text-center" id="alertText"><%= alert %></p>
+      <%= render "devise/shared/error_messages", resource: resource %>
     <% end %>
     <div class="mt-5 text-center">By signing up, you accept the
       <a class="link-focus link-hover link-active" href="/data_policy">Data Policy</a> and the
       <a class="link-focus link-hover link-active" href="/cookies_policy">Cookies Policy.</a>
     </div>
     <div class="mt-5 text-center">Already have an account?
-      <a href="/users/sign_in" class="link-focus link-hover link-active">Log in</a>
+      <%= link_to 'Log in', new_user_session_path, class: "link-focus link-hover link-active" %>
     </div>
   </div>
 </div>
-<h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
