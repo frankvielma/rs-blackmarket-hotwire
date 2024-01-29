@@ -22,6 +22,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'rspec/retry'
 require 'support/retry/message_formatter'
+require 'view_component/test_helpers'
+require 'view_component/system_test_helpers'
+require 'capybara/rspec'
 
 ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(
@@ -65,6 +68,10 @@ RSpec.configure do |config|
     text = Retry::MessageFormatter.new(ex).to_s
     Retry::PullRequestComment.new.comment(text)
   end
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 end
 
 Shoulda::Matchers.configure do |config|

@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe ButtonVisibilityComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'renders the button' do
+    render_inline(described_class.new)
+    expect(page).to have_button
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'renders the visibility icon' do
+    render_inline(described_class.new)
+    expect(page).to have_css('.visibility_on')
+  end
 end
