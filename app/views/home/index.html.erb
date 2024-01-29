@@ -1,6 +1,6 @@
-<div class='flex flex-col items-center text-center text-white '>
+<div class="flex flex-col items-center text-center text-white">
   <div class="mt-16">
-  <%= image_tag "rs_logo.png" %>
+    <%= image_tag "rs_logo.png", alt: 'Logo' %>
   </div>
   <div class="mt-20 text-5xl font-semibold sm:text-[6.25rem]">
     <%= I18n.t("home.black_market") %>
@@ -8,9 +8,10 @@
   <div class="mt-20 rounded-xl bg-[#FA2D83] p-9 py-6 text-[3.4rem] sm:text-5xl">
     UI
   </div>
-
-  <%= link_to "Login / SignUp", "/login", class: "mt-16 hover:text-links hover:underline focus:rounded-lg focus:border-2 focus:border-dashed focus:border-focus focus:px-3 focus:outline-none active:text-active" %>
-  <div class="mt-20 text-2xl">Collaborators</div>
+  <%= link_to "Login / SignUp", new_user_session_path, class: "text-2xl mt-16 hover:text-links hover:underline focus:rounded-lg focus:border-2 focus:border-dashed focus:border-focus focus:px-3 focus:outline-none active:text-active" %>
+  <div class="mt-20 text-2xl">
+    <%= I18n.t("home.collaborators") %>
+  </div>
   <div class="mt-10 w-16 bg-[url('bg_collaborator.png')] bg-no-repeat p-4 text-2xl font-semibold text-black">
     FV
   </div>
