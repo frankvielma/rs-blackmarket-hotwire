@@ -13,6 +13,7 @@ module Hotwire
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    config.exceptions_app = routes
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
@@ -54,5 +55,9 @@ module Hotwire
     ENV['DISABLE_RAILS_STRICT_LOADING'] ||= 'true' if defined?(Rails::Console)
     config.active_record.strict_loading_by_default = ENV['DISABLE_RAILS_STRICT_LOADING'] != 'true'
     config.active_record.action_on_strict_loading_violation = :log
+
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
+      html_tag
+    end
   end
 end
