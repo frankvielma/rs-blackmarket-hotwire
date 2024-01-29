@@ -20,3 +20,5 @@ test:
 # https://edgeguides.rubyonrails.org/configuring.html#connection-preference
 production:
   <<: *default
+  database: blackmarket_hotwire
+
