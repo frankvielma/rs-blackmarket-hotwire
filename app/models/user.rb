@@ -27,4 +27,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+
+  def full_name
+    return username if first_name.blank?
+
+    "#{first_name} #{last_name}"
+  end
 end
