@@ -11,4 +11,8 @@ module Helpers
   def auth_headers
     user.create_new_auth_token
   end
+
+  def set_devise_mapping
+    request.env['devise.mapping'] = Devise.mappings[:user]
+  end
 end

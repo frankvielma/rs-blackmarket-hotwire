@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'sessions' }
   get 'errors/not_found'
   get 'errors/internal_server_error'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,11 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'home#index'
 
-  # get 'login' => 'users#login'
-  # post 'sign_in' => 'users#sign_in'
-  # get 'singup' => 'users#new'
-  # post 'sign_up' => 'users#sign_up'
-  # get 'sign_out' => 'users#sign_out'
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
   match '/404', to: 'errors#not_found', via: :all
