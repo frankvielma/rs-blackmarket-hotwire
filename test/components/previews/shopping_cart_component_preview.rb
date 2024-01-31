@@ -5,4 +5,3 @@ class ShoppingCartComponentPreview < ViewComponent::Preview
     render(ShoppingCartComponent.new)
   end
 end
-
