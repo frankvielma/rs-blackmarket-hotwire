@@ -34,4 +34,18 @@ RSpec.describe SessionsController do
       end
     end
   end
+
+  describe '#destroy' do
+    let(:user_attributes) { attributes_for(:user, password: '12345678', password_confirmation: '12345678') }
+
+    it 'logs out the user and redirects to the root path' do
+      create(:user, user_attributes)
+      post :create, params: { user: user_attributes }
+
+      delete :destroy
+
+      expect(response).to redirect_to(root_path)
+      expect(controller.current_user).to be_nil
+    end
+  end
 end
