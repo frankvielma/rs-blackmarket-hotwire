@@ -9,7 +9,7 @@ export default class extends Controller {
   checkForm = () => {
     if (this.validateEmail()) {
       error.innerText = '';
-      submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold outline outline-[1px] cursor-not-allowed active:ring-2 active:ring-offset-2 active:outline-none custom-focus"
+      submitButton.className = "h-[44px] rounded-md text-white w-full bg-black font-bold outline outline-[1px] cursor-pointer hover:bg-hover active:ring-2  active:ring-offset-2 active:outline-none custom-focus"
     }
   }
 
