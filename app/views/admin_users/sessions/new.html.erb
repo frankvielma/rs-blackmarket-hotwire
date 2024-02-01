@@ -1,0 +1,25 @@
+<div class="h-screen flex items-center justify-center flex-col bg-cover bg-center bg-no-repeat px-6 py-16 text-base text-dark-violet md:px-28">
+  <div class="h-[366px] max-w-[328px] rounded-lg border-black bg-white px-[34px] md:h-[425px] md:max-w-[360px]">
+    <div class="pb-5 pt-[40px] md:p-[47px] md:pb-7">
+      <%= render LogoComponent.new(title: 'Login', type: 'black') %>
+    </div>
+    <%= form_for resource, as: resource_name, url: session_path(resource_name), data: { controller: "validate-form-admin" } do |form| %>
+      <div class="my-4 flex flex-col">
+        <%= form.label :email, class: "text-sm md:text-base" %>
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
+      </div>
+      <div class="relative my-4">
+        <%= form.label :password, class: "text-sm md:text-base" %>
+        <div class="flex flex-col relative">
+          <%= form.password_field :password, autocomplete: "current-password", class: "border custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your password" %>
+          <%= render(ButtonVisibilityComponent.new()) %>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <%= form.submit "Log in", id: "submitButton", class: "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed active:ring-2 active:ring-offset-2 active:outline-none custom-focus" %>
+      </div>
+      <div class="invisible text-red-500 text-center" id="error"></div>
+      <p class="alert text-red-500 text-center" id="alertText"><%= alert %></p>
+    <% end %>
+  </div>
+</div>
