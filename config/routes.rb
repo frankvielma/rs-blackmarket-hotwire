@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Motor::Admin => '/motor_admin'
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
   get 'errors/not_found'
   get 'errors/internal_server_error'
