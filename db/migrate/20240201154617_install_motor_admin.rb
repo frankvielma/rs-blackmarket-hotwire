@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InstallMotorAdmin < ActiveRecord::Migration[7.1]
   def self.up
     create_table :motor_queries do |t|
@@ -16,6 +18,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
               name: 'motor_queries_name_unique_index',
               unique: true,
               where: 'deleted_at IS NULL'
+      t.index [:author_id, :author_type]
     end
 
     create_table :motor_dashboards do |t|
@@ -33,6 +36,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
               name: 'motor_dashboards_title_unique_index',
               unique: true,
               where: 'deleted_at IS NULL'
+      t.index [:author_id, :author_type]
     end
 
     create_table :motor_forms do |t|
@@ -53,6 +57,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
               name: 'motor_forms_name_unique_index',
               unique: true,
               where: 'deleted_at IS NULL'
+      t.index [:author_id, :author_type]
     end
 
     create_table :motor_resources do |t|
@@ -91,6 +96,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
               name: 'motor_alerts_name_unique_index',
               unique: true,
               where: 'deleted_at IS NULL'
+      t.index [:author_id, :author_type]
     end
 
     create_table :motor_alert_locks do |t|
@@ -150,9 +156,9 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
       t.timestamps
 
       t.index 'name',
-        name: 'motor_api_configs_name_unique_index',
-        unique: true,
-        where: 'deleted_at IS NULL'
+              name: 'motor_api_configs_name_unique_index',
+              unique: true,
+              where: 'deleted_at IS NULL'
     end
 
     create_table :motor_notes do |t|
@@ -240,11 +246,7 @@ class InstallMotorAdmin < ActiveRecord::Migration[7.1]
 
     model.table_name = 'motor_configs'
 
-    model.create!(key: 'header.links', value: [{
-      name: '⭐ Star on GitHub',
-      path: 'https://github.com/motor-admin/motor-admin-rails'
-    }].to_json)
-
+    model.create!(key: 'header.links', value: [])
     model.table_name = 'motor_api_configs'
 
     model.create!(name: 'origin', url: '/', preferences: {}, credentials: {})
