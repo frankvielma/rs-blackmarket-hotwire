@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: products
@@ -15,12 +17,12 @@
 #
 FactoryBot.define do
   factory :product do
-    title { "MyString" }
-    description { "MyText" }
+    title { 'MyString' }
+    description { 'MyText' }
     state { 1 }
     stock { 1 }
     unit_price_cents { 1 }
-    unit_price_currency { "MyString" }
+    unit_price_currency { 'MyString' }
     category_id { 1 }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: products
@@ -15,7 +17,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Product, type: :model do
+RSpec.describe Product do
   # Validations
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
