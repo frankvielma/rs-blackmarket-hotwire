@@ -7,9 +7,9 @@
 #  id                  :bigint           not null, primary key
 #  title               :string
 #  description         :text
-#  state               :integer
-#  stock               :integer
-#  unit_price_cents    :integer
+#  state               :integer          default("used")
+#  stock               :integer          default(0)
+#  unit_price_cents    :integer          default(0)
 #  unit_price_currency :integer          default("USD")
 #  category_id         :integer
 #  created_at          :datetime         not null
@@ -29,6 +29,10 @@ RSpec.describe Product do
   # Enum validation
   describe 'unit_price_currency enum' do
     it { is_expected.to define_enum_for(:unit_price_currency).with_values(USD: 0, EUR: 1, BTC: 2) }
+  end
+
+  describe 'state enum' do
+    it { is_expected.to define_enum_for(:state).with_values(used: 0, not_used: 1, refurbished: 2) }
   end
 
   # Image attachment
