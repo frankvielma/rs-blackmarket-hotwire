@@ -26,17 +26,27 @@ RSpec.describe Product do
     it { is_expected.to validate_presence_of(:unit_price_currency) }
   end
 
-  # Enum validation
-  describe 'unit_price_currency enum' do
-    it { is_expected.to define_enum_for(:unit_price_currency).with_values(USD: 0, EUR: 1, BTC: 2) }
+  # Associations
+  describe 'associations' do
+    it { is_expected.to belong_to(:category) }
+    it { is_expected.to have_one_attached(:image) }
   end
 
-  describe 'state enum' do
+  # Enums
+  describe 'enums' do
+    it { is_expected.to define_enum_for(:unit_price_currency).with_values(USD: 0, EUR: 1, BTC: 2) }
     it { is_expected.to define_enum_for(:state).with_values(used: 0, not_used: 1, refurbished: 2) }
   end
 
-  # Image attachment
-  describe 'image attachment' do
-    it { is_expected.to have_one_attached(:image) }
+  it 'does not allow negative stock' do
+    product = build(:product, stock: -5)
+    expect(product).not_to be_valid
+    expect(product.errors[:stock]).to include('must be greater than or equal to 0')
+  end
+
+  it 'does not allow negative unit price cents' do
+    product = build(:product, unit_price_cents: -100)
+    expect(product).not_to be_valid
+    expect(product.errors[:unit_price_cents]).to include('must be greater than or equal to 0')
   end
 end
