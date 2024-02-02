@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_154617) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id", "author_type"], name: "index_motor_alerts_on_author_id_and_author_type"
     t.index ["name"], name: "motor_alerts_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["query_id"], name: "index_motor_alerts_on_query_id"
     t.index ["updated_at"], name: "index_motor_alerts_on_updated_at"
@@ -109,6 +110,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_154617) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id", "author_type"], name: "index_motor_dashboards_on_author_id_and_author_type"
     t.index ["title"], name: "motor_dashboards_title_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_dashboards_on_updated_at"
   end
@@ -125,6 +127,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_154617) do
     t.string "api_config_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id", "author_type"], name: "index_motor_forms_on_author_id_and_author_type"
     t.index ["name"], name: "motor_forms_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_forms_on_updated_at"
   end
@@ -180,6 +183,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_154617) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id", "author_type"], name: "index_motor_queries_on_author_id_and_author_type"
     t.index ["name"], name: "motor_queries_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_queries_on_updated_at"
   end

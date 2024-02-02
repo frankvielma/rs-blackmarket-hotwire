@@ -23,6 +23,7 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - config/initializers/devise.rb
+    - db/migrate/20240201154617_install_motor_admin.rb  
 
 Layout/ClassStructure:
   Enabled: true
