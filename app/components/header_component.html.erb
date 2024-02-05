@@ -1,4 +1,4 @@
-<header class="h-14 w-screen bg-black px-4 lg:h-24 lg:pt-6 pt-2">
+<header class="h-14 w-screen bg-black px-4 lg:h-min lg:pt-6 pt-2">
   <div class="hidden lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:justify-between">
     <%= render LogoComponent.new(title: 'Login', type: 'white') %>
     <div>
@@ -11,7 +11,6 @@
       <%= render(ShoppingCartComponent.new()) %>
     </div>
   </div>
-
   <div class="lg:hidden flex flex-col gap-4">
     <div class="container mx-auto flex items-center">
       <%= render LogoComponent.new(title: 'Login', type: 'white') %>
@@ -29,7 +28,6 @@
     </div>
     <%= render(SearchBarComponent.new()) %>
   </div>
-
   <div class="navbar-menu relative z-10 hidden" data-controller="burger">
     <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
       <div class="flex items-center justify-around mb-8">
@@ -46,3 +44,33 @@
     </nav>
   </div>
 </header>
+<section id="featured-products-container" class="w-[120px] text-black flex flex-row mt-4 ml-4 gap-4 mb-0">
+  <% Product.featured.each do |product| %>
+    <div class="flex flex-col featured-product">
+      <div class="w-[120px] h-[120px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center shadow-2xl">
+        <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]" %>
+      </div>
+      <div class="W-[120px] bg-white text-sm pt-2 shadow-inner">
+        <div class="flex gap-2 justify-center">
+          <div>
+            $<%= product.price %>
+          </div>
+          <div class="text-white">
+            <%= render(StateComponent.new(state: product.state)) %>
+          </div>
+        </div>
+        <div class="flex gap-4 mt-4 ml-2 mr-2">
+          <div>
+            <%= product.title %>
+          </div>
+          <div>
+            <%= image_tag 'favorite.svg' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+<div class="text-black text-base m-auto mt-0">
+  <%= link_to "See All", "#", class: "text-[#076CE0]" %>
+</div>
