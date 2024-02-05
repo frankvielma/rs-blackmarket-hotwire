@@ -27,7 +27,7 @@ class Product < ApplicationRecord
 
   has_one_attached :image
 
-  scope :featured, -> { order('random()').limit(3) }
+  scope :featured, -> { order('random()').limit(4) }
 
   def price
     unit_price_cents / 100
