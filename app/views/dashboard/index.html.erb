@@ -1,4 +1,7 @@
-<%= render(HeaderComponent.new()) %>
-<div id="content" style="height:calc(100vh - 100px)">
+<div class="flex flex-col gap-12 bg-slate-100" >
+  <%= render(HeaderComponent.new()) %>
+  <%= render(DiscountComponent.new()) %>
+  <%= render(PaymentComponent.new()) %>
+  <%= render(ShipmentComponent.new()) %>
+  <%= render(FooterComponent.new()) %>
 </div>
-<%= render(FooterComponent.new()) %>
