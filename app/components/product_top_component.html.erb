@@ -25,7 +25,5 @@
       </div>
     <% end %>
   </section>
-  <div class="text-black text-base m-auto mt-0">
-    <%= link_to "See all", "#", class: "text-[#076CE0]" %>
-  </div>
+  <%= render(SeeAllProductsComponent.new()) %>
 </div>

@@ -1,6 +1,6 @@
 <div>
   <header class="h-14 w-screen bg-black px-4 lg:h-min lg:pt-6 pt-2">
-    <div class="hidden lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:justify-between">
+    <div class="hidden lg:mx-auto lg:flex lg:w-auto lg:space-x-6 lg:justify-between h-14">
       <%= render LogoComponent.new(title: 'Login', type: 'white') %>
       <div>
         <%= render(SearchBarComponent.new()) %>
@@ -44,43 +44,47 @@
         </div>
       </nav>
     </div>
-    <div class="hidden lg:flex lg:flex-col lg:gap-4 lg:items-center">
-      <section id="featured-products-container-lg">
-        <h1 class="sr-only"></h1>
-        <div class="flex flex-row justify-between mt-8" >
-          <% Product.featured.each do |product| %>
-            <div class="lg:w-[240px] lg:h-[240px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center ml-12">
-              <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
-            </div>
-          <% end %>
-        </div>
-      </section>
-    </div>
+    <% if @featured %>
+      <div class="hidden lg:flex lg:flex-col lg:gap-4 lg:items-center">
+        <section id="featured-products-container-lg">
+          <h1 class="sr-only"></h1>
+          <div class="flex flex-row justify-between mt-8" >
+            <% Product.featured.each do |product| %>
+              <div class="lg:w-[240px] lg:h-[240px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center ml-12">
+                <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
+              </div>
+            <% end %>
+          </div>
+        </section>
+      </div>
+    <% end %>
   </header>
-  <div class="hidden lg:flex lg:flex-col lg:items-center lg:gap-4 text-black">
-    <div class="flex justify-between">
-      <% Product.featured.each do |product| %>
-        <div class="w-[240px] rounded-b-xl border-b-[1px] border-gray overflow-hidden bg-white flex flex-col items-center justify-center ml-12">
-          <div class="flex flex-row gap-2 justify-center lg:mt-4">
-            <div>
-              $<%= product.price %>
+  <% if @featured %>
+    <div class="hidden lg:flex lg:flex-col lg:items-center lg:gap-4 text-black">
+      <div class="flex justify-between">
+        <% Product.featured.each do |product| %>
+          <div class="w-[240px] rounded-b-xl border-b-[1px] border-gray overflow-hidden bg-white flex flex-col items-center justify-center ml-12">
+            <div class="flex flex-row gap-2 justify-center lg:mt-4">
+              <div>
+                $<%= product.price %>
+              </div>
+              <div class="text-white">
+                <%= render(StateComponent.new(state: product.state)) %>
+              </div>
             </div>
-            <div class="text-white">
-              <%= render(StateComponent.new(state: product.state)) %>
+            <div class="flex gap-4 mt-4 ml-2 mr-2 items-center">
+              <div>
+                <%= product.title.truncate(15) %>
+              </div>
+              <%= render(FavoriteComponent.new(product_id: product.id)) %>
             </div>
           </div>
-          <div class="flex gap-4 mt-4 ml-2 mr-2 items-center">
-            <div>
-              <%= product.title.truncate(15) %>
-            </div>
-            <%= render(FavoriteComponent.new(product_id: product.id)) %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <%= render(SeeAllProductsComponent.new()) %>
     </div>
-    <div class="text-black text-base m-auto mt-0">
-      <%= link_to "See all", "#", class: "text-[#076CE0]" %>
-    </div>
-  </div>
+  <% end %>
 </div>
-<%= render(ProductTopComponent.new()) %>
+<% if @featured %>
+  <%= render(ProductTopComponent.new()) %>
+<% end %>

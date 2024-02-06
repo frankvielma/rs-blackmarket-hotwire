@@ -2,6 +2,10 @@
 
 class ProductsController < ApplicationController
   include Devise::Controllers::Helpers
+
+  def index
+  end
+
   def favorite
     @product = Product.find(params[:id])
     favorite_products = @product.favorite_products
