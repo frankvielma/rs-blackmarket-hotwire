@@ -26,6 +26,7 @@ class Product < ApplicationRecord
   validates :unit_price_cents, numericality: { greater_than_or_equal_to: 0 }
 
   has_one_attached :image
+  has_many :favorite_products, dependent: :destroy
 
   scope :featured, -> { order('random()').limit(4) }
 

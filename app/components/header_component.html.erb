@@ -46,10 +46,11 @@
     </div>
     <div class="hidden lg:flex lg:flex-col lg:gap-4 lg:items-center">
       <section id="featured-products-container-lg">
+        <h1 class="sr-only"></h1>
         <div class="flex flex-row justify-between mt-8" >
           <% Product.featured.each do |product| %>
             <div class="lg:w-[240px] lg:h-[240px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center ml-12">
-              <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]" %>
+              <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
             </div>
           <% end %>
         </div>
@@ -57,7 +58,7 @@
     </div>
   </header>
   <div class="hidden lg:flex lg:flex-col lg:items-center lg:gap-4 text-black">
-    <div class="flex justify-between" >
+    <div class="flex justify-between">
       <% Product.featured.each do |product| %>
         <div class="w-[240px] rounded-b-xl border-b-[1px] border-gray overflow-hidden bg-white flex flex-col items-center justify-center ml-12">
           <div class="flex flex-row gap-2 justify-center lg:mt-4">
@@ -72,9 +73,7 @@
             <div>
               <%= product.title.truncate(15) %>
             </div>
-            <div>
-              <%= image_tag 'favorite.svg' %>
-            </div>
+            <%= render(FavoriteComponent.new(product_id: product.id)) %>
           </div>
         </div>
       <% end %>
