@@ -31,6 +31,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
 
+  has_many :favorite_products, dependent: :destroy
+
   def full_name
     return username if first_name.blank?
 

@@ -1,0 +1,4 @@
+<div data-controller="favorite">
+  <%= image_tag 'favorite_off.svg', id: "favorite-#{@product_id}", data: { action: "click->favorite#togglefavorite" }, class: favorite('off') %>
+  <%= image_tag 'favorite_on.svg', id: "favorite-#{@product_id}", data: { action: "click->favorite#togglefavorite" }, class: favorite('on') %>
+</div>
