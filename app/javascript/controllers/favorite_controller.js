@@ -2,9 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="favorite"
 export default class extends Controller {
+  static values = { product_id: Number }
 
   handleKeyPress(event) {
-    const productId = event.target.id.split('-')[1];
+    const productId = this.productIdValue;
     if ((event.key === ' ') || (event.key === 'Enter')) {
       event.preventDefault();
       this.sendFavoriteRequest(`/products/${productId}/favorite`, { favorite: this.isFavorite });
@@ -12,7 +13,7 @@ export default class extends Controller {
   }
 
   togglefavorite(event) {
-    const productId = event.target.parentElement.id.split('-')[1];
+    const productId = this.productIdValue;
     this.sendFavoriteRequest(`/products/${productId}/favorite`, { favorite: this.isFavorite });
   }
   
