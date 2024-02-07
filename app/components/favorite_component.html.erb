@@ -1,4 +1,4 @@
-<div data-controller="favorite">
+<div data-controller="favorite"  data-favorite-product_id-value="<%= @product_id %>">
   <button id="favorite-<%= @product_id %>" data-action="click->favorite#togglefavorite keydown->favorite#handleKeyPress" aria-describedby="favorite icon">
     <%= image_tag 'favorite_off.svg', class: favorite_off %>
     <%= image_tag 'favorite_on.svg', class: favorite_on %>
