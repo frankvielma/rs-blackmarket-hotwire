@@ -1,4 +1,8 @@
 <div data-controller="favorite">
-  <%= image_tag 'favorite_off.svg', id: "favorite-#{@product_id}", data: { action: "click->favorite#togglefavorite" }, class: favorite('off') %>
-  <%= image_tag 'favorite_on.svg', id: "favorite-#{@product_id}", data: { action: "click->favorite#togglefavorite" }, class: favorite('on') %>
+  <button id="favorite-<%= @product_id %>" data-action="click->favorite#togglefavorite keydown->favorite#handleKeyPress" class=<%= favorite('off') %> aria-describedby="favorite icon">
+    <%= image_tag 'favorite_off.svg' %>
+  </button>
+  <button id="favorite-<%= @product_id %>" data-action="click->favorite#togglefavorite keydown->favorite#handleKeyPress" class=<%= favorite('on') %> aria-describedby="favorite icon">
+    <%= image_tag 'favorite_on.svg' %>
+  </button>
 </div>

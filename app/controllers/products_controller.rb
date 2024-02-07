@@ -3,8 +3,7 @@
 class ProductsController < ApplicationController
   include Devise::Controllers::Helpers
 
-  def index
-  end
+  def index; end
 
   def favorite
     @product = Product.find(params[:id])
