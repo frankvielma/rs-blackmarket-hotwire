@@ -5,12 +5,12 @@ class FavoriteComponent < ViewComponent::Base
     @product_id = product_id
   end
 
-  def favorite(status)
-    if status == 'on'
-      favorite? ? '' : 'hidden'
-    else
-      favorite? ? 'hidden' : ''
-    end
+  def favorite_off
+    favorite? ? 'hidden' : ''
+  end
+
+  def favorite_on
+    favorite? ? '' : 'hidden'
   end
 
   def favorite?

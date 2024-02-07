@@ -24,8 +24,9 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then(data => {
-      this.element.children[0].classList.toggle('hidden');
-      this.element.children[1].classList.toggle('hidden');
+      const button = this.element.querySelector('button').children;
+      button[0].classList.toggle('hidden');
+      button[1].classList.toggle('hidden');
     });
   }
 
