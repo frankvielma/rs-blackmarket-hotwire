@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe HeaderComponent, type: :component do
   describe 'Header component' do
     before do
-      render_inline(described_class.new)
+      render_inline(described_class.new(featured: true))
     end
 
     it 'renders the logo compoent' do
