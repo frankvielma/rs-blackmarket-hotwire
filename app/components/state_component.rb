@@ -8,13 +8,13 @@ class StateComponent < ViewComponent::Base
   def color(state)
     {
       'restored' => 'bg-[#559F21]',
-      'not_used' => 'bg-[#2751B9]',
+      'is_new' => 'bg-[#2751B9]',
       'used' => 'bg-[#D42F1A]'
     }[state]
   end
 
   def text(state)
-    return state unless state == 'not_used'
+    return state unless state == 'is_new'
 
     'new'
   end
