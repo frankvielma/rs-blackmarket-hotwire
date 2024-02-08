@@ -3,7 +3,13 @@
 class ProductsController < ApplicationController
   include Devise::Controllers::Helpers
 
-  def index; end
+  def index
+    if params[:query].present?
+      @pagy, @products = pagy(Product.search_products(params[:query]), items: 4)
+    else
+      @pagy, @products = pagy(Product.all, items: 4)
+    end
+  end
 
   def favorite
     @product = Product.find(params[:id])
