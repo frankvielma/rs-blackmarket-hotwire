@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StateComponentPreview < ViewComponent::Preview
-  def is_new_state
+  def new_state
     render(StateComponent.new(state: 'is_new'))
   end
 
