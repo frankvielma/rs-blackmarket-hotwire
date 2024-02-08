@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-12 bg-slate-100" >
+  <%= render(HeaderComponent.new(featured: false)) %>
+  <div class="flex flex-col text-black mt-2 w-screen items-center justify-center gap-4">
+    <%= image_tag 'empty_states.svg' %>
+    <div class="font-bold">
+      No results found
+    </div>
+    <div class="w-[80%] text-base text-center">
+      Your search '------' did not match any results. Please try again with another term.
+    </div>
+    <button class="text-white w-32 text-base text-center rounded-md pl-2 pr-2 pb-1 bg-black h-10">
+      Clear search
+    </button>
+  </div>
+  <%= render(FooterComponent.new()) %>
+</div>

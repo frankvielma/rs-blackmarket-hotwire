@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :products do
     get 'index', on: :collection
     post 'favorite', on: :member
+    get 'empty', on: :collection
   end
 
   match '/404', to: 'errors#not_found', via: :all
