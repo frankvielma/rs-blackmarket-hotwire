@@ -2,11 +2,17 @@
 
 class ProductsController < ApplicationController
   include Devise::Controllers::Helpers
+  before_action :authenticate_user!
 
   def index
     query = params[:query]
-    products = query.present? ? Product.search_products(query) : Product.all
-    @pagy, @products = pagy(products, items: 4)
+    products = query.present? ? Product.search_products(query) : [Product.all]
+
+    if products.present?
+      @pagy, @products = pagy(products, items: 4)
+    else
+      redirect_to empty_products_path
+    end
   end
 
   def favorite
