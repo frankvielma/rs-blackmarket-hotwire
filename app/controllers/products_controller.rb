@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     query = params[:query]
-    products = query.present? ? Product.search_products(query) : [Product.all]
+    products = query.present? ? Product.search_products(query) : Product.all
 
     if products.present?
       @pagy, @products = pagy(products, items: 4)
