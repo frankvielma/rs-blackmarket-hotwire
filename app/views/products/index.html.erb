@@ -1,16 +1,81 @@
 <div class="flex flex-col gap-12 bg-slate-100" >
   <%= render(HeaderComponent.new(featured: false)) %>
   <%= turbo_frame_tag "main" do %>
-    <div class="flex flex-col text-black shadow-sm mt-2">
-      <% @products.each do |product| %>
-        <% cache product do %>
-          <%= render(ProductComponent.new(product: product)) %>
+    <div class="lg:hidden">
+      <div class="flex flex-col text-black shadow-sm mt-2">
+        <% @products.each do |product| %>
+          <% cache product do %>
+            <%= render(ProductComponent.new(product: product)) %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="text-black text-center mt-8 mb-8">
+        <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
+      </div>
     </div>
-    <div class="text-black text-center mt-4">
-      <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
+    <div class="lg:block hidden text-black">
+      <div class="flex gap-4 justify-center">
+        <div class="text-sm w-52">
+          <div class="font-bold text-xl">Filters</div>
+          <div class="mt-4">
+            <div class="font-bold">Condition:</div>
+            <fieldset class="mt-2">
+              <div>
+                <input type="radio" id="new" name="condition" value="new" checked />
+                <label for="new">New</label>
+              </div>
+              <div>
+                <input type="radio" id="used" name="condition" value="used" />
+                <label for="used">Used</label>
+              </div>
+              <div>
+                <input type="radio" id="refurbhished" name="condition" value="refurbhished" />
+                <label for="refurbhished">Refurbhised</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="mt-4">
+            <div class="font-bold">Category:</div>
+            <div class="mt-4 w-44">
+              <%= render(SearchBarComponent.new(placeholder: 'Search')) %>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="font-bold">Price:</div>
+            <div class="mt-4 w-44 flex flex-col gap-2">
+              <div class="">
+                Min
+              </div>
+              <input type="text" placeholder="Type minumum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+            </div>
+            <div class="mt-4 w-44 flex flex-col gap-2">
+              <div class="">
+                Max
+              </div>
+              <input type="text" placeholder="Type maximum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+            </div>
+          </div>
+          <div class="mt-6 mb-6">
+            <button class="text-white text-center rounded-md pl-2 pr-2 pb-1 bg-black h-8">
+              See results ->
+            </button>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col shadow-sm mt-2 gap-2">
+            <% @products.each do |product| %>
+              <% cache product do %>
+                <%= render(ProductComponent.new(product: product)) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="text-black text-center mt-8 mb-8">
+            <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <%= render(FooterComponent.new()) %>
+  </div>
+<% end %>
+<%= render(FooterComponent.new()) %>
 </div>
