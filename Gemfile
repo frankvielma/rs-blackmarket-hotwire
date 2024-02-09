@@ -42,8 +42,8 @@ group :development do
   gem 'listen', '~> 3.8'
   gem 'lookbook', '>= 2.2.0'
   gem 'rails_best_practices', '~> 1.20'
-  gem 'reek', '~> 6.2'
-  gem 'rubocop', '~> 1.59', require: false
+  gem 'reek', '~> 6.3'
+  gem 'rubocop', '~> 1.60', require: false
   gem 'rubocop-capybara', '~> 2.20'
   gem 'rubocop-factory_bot', '~> 2.25', require: false
   gem 'rubocop-performance', '~> 1.20', require: false
