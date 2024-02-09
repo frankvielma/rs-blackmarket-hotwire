@@ -22,6 +22,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'rspec/retry'
 require 'support/retry/message_formatter'
+require 'view_component/test_helpers'
+require 'view_component/system_test_helpers'
+require 'capybara/rspec'
 
 ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(
@@ -64,6 +67,15 @@ RSpec.configure do |config|
   config.intermittent_callback = proc do |ex|
     text = Retry::MessageFormatter.new(ex).to_s
     Retry::PullRequestComment.new.comment(text)
+  end
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
+  # https://github.com/rails/tailwindcss-rails/issues/153
+  if config.files_to_run.any? { |path| path.start_with?(Rails.root.join('spec/controllers').to_s) }
+    Rails.application.load_tasks
+    Rake::Task['tailwindcss:build'].invoke
   end
 end
 

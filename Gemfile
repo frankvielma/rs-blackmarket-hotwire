@@ -42,7 +42,7 @@ group :development do
   gem 'listen', '~> 3.8'
   gem 'lookbook', '>= 2.2.0'
   gem 'rails_best_practices', '~> 1.20'
-  gem 'reek', '~> 6.3'
+  gem 'reek', '~> 6.2'
   gem 'rubocop', '~> 1.59', require: false
   gem 'rubocop-capybara', '~> 2.20'
   gem 'rubocop-factory_bot', '~> 2.25', require: false
@@ -54,7 +54,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.40'
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'faker', '~> 3.2'
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
@@ -63,7 +63,7 @@ group :test do
   gem 'prosopite', '~> 1.4.2'
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
-  gem 'selenium-webdriver', '~> 4.17.0'
+  gem 'selenium-webdriver', '~> 4.16.0'
   gem 'shoulda-matchers', '~> 6.1'
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'webmock', '~> 3.19'
