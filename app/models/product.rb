@@ -31,6 +31,10 @@ class Product < ApplicationRecord
   default_scope -> { order(:id) }
   scope :featured, -> { order('random()').limit(4) }
 
+  def self.search_products(query)
+    where('title ILIKE ? OR description ILIKE ?', "%#{query}%", "%#{query}%")
+  end
+
   def price
     unit_price_cents / 100
   end
