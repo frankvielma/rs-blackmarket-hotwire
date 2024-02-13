@@ -2,6 +2,6 @@
 
 class ProductComponentPreview < ViewComponent::Preview
   def default
-    render(ProductComponent.new)
+    render(ProductComponent.new(product: Product.first))
   end
 end
