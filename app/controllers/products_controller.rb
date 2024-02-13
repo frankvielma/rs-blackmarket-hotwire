@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
                 'products/empty'
               end
 
-    render turbo_stream: turbo_stream.update('main', partial:, locals: { products: })
+    render turbo_stream: turbo_stream.update('main', partial:, locals: { products:, query: })
   end
 
   def favorite
