@@ -7,12 +7,17 @@ class ProductsController < ApplicationController
   def index
     query = params[:query]
     products = query.present? ? Product.search_products(query) : Product.all
+    @pagy, @products = pagy(products, items: 5) if products.present?
 
-    if products.present?
-      @pagy, @products = pagy(products, items: 5)
-    else
-      redirect_to empty_products_path
-    end
+    return if query.blank?
+
+    partial = if @products.present?
+                'products/search_results'
+              else
+                'products/empty'
+              end
+
+    render turbo_stream: turbo_stream.update('main', partial:, locals: { products: })
   end
 
   def favorite
