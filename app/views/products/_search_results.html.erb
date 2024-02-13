@@ -11,9 +11,25 @@
   </div>
 </div>
 <div class="lg:block hidden text-black">
+  <div class="flex gap-4 justify-center items-center">
+    <div class="w-52 font-bold text-xl">Filters</div>
+    <div class="w-[744px] flex justify-between">
+      <div class="text-xl">
+        You searched for 
+        <span class="font-bold" id="keyword">“chairs”</span>
+      </div>
+      <div class="text-sm flex items-center gap-4">
+        <div class="font-bold">
+          Sort by
+        </div>
+        <select name="products" id="sortby" class="rounded-md h-9 text-sm">
+          <option value="volvo">Most Recent</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <div class="flex gap-4 justify-center">
     <div class="text-sm w-52">
-      <div class="font-bold text-xl">Filters</div>
       <div class="mt-4">
         <div class="font-bold">Condition:</div>
         <fieldset class="mt-2">
@@ -58,7 +74,7 @@
         </button>
       </div>
     </div>
-    <div>
+    <div class="flex flex-col">
       <div class="flex flex-col shadow-sm mt-2 gap-2">
         <% @products.each do |product| %>
           <% cache product do %>
