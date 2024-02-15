@@ -1,6 +1,6 @@
 <div class="relative container flex w-full text-white">
   <%= form_with action: products_path, method: :get, class: "flex-grow", data: { controller: "search-products" } do |form| %>
-    <%= form.text_field :query, class: "h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black", placeholder: @placeholder, type: :text %>
+    <%= form.text_field :query, id: "query-#{@size}", class: "h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black", placeholder: @placeholder, type: :text %>
     <div class="absolute inset-y-0 right-[1rem] flex items-center cursor-pointer">
       <button type="submit">
         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

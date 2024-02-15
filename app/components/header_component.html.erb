@@ -3,7 +3,7 @@
     <div class="hidden lg:mx-auto lg:flex lg:w-auto lg:space-x-6 lg:justify-between h-14">
       <%= render LogoComponent.new(title: 'Login', type: 'white') %>
       <div class="lg:w-[28.5rem]">
-        <%= render(SearchBarComponent.new(placeholder: 'Search for products')) %>
+        <%= render SearchBarComponent.new(placeholder: 'Search for products', size: 'desktop') %>
       </div>
       <div>
         <%= render(MyaccountComponent.new()) %>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="flex justify-center">
-        <%= render(SearchBarComponent.new(placeholder: 'Search for products')) %>
+        <%= render SearchBarComponent.new(placeholder: 'Search for products', size: 'mobile') %>
       </div>
     </div>
     <div class="navbar-menu relative z-10 hidden" data-controller="burger">
