@@ -1,5 +1,19 @@
 <div class="lg:hidden">
   <div class="flex flex-col text-black shadow-sm mt-2">
+    <div class="flex flex-col text-sm ml-2 mr-2 gap-2">
+      <div class="flex justify-between">
+        <div>
+          You searched for “<span class="font-bold" id="searched_for">...</span>”
+        </div>
+        <div>
+          Clear all
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <div>Your filters will appear here.</div>
+        <div><%= image_tag 'filter_list.svg' %></div>
+      </div>
+    </div>
     <% @products.each do |product| %>
       <% cache product do %>
         <%= render(ProductComponent.new(product: product)) %>
