@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
 
   def index
     query = params[:query]
-    products = query.present? ? Product.search_products(query) : Product.all
+    state = params[:state]
+    products = query.present? || state.present? ? Product.search_products(query, state) : Product.all
     @pagy, @products = pagy(products, items: 5) if products.present?
 
     return if query.blank?
