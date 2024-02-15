@@ -1,21 +1,5 @@
 <%= form_with action: products_path, method: :get, class: "flex-grow" do |form| %>
-  <div class="mt-4">
-    <div class="font-bold">Condition:</div>
-    <fieldset class="mt-2">
-      <div>
-        <input type="radio" id="new" name="state" value="is_new" />
-        <label for="new">New</label>
-      </div>
-      <div>
-        <input type="radio" id="used" name="state" value="used" />
-        <label for="used">Used</label>
-      </div>
-      <div>
-        <input type="radio" id="refurbhished" name="state" value="restored" />
-        <label for="refurbhished">Refurbhised</label>
-      </div>
-    </fieldset>
-  </div>
+  <%= render ConditionComponent.new() %>
   <div class="mt-4">
     <div class="font-bold">Category:</div>
     <div class="mt-4 w-44">
@@ -47,7 +31,7 @@
     </div>
   </div>
   <div class="mt-6 mb-6">
-    <button class="text-white text-center rounded-md pl-2 pr-2 pb-1 bg-black h-8" type="submit">
+    <button class="text-white text-center rounded-md pl-2 pr-2 pb-1 bg-black h-8" type="submit" data-controller="clear-search" data-action="click->clear-search#clearSearch">
       See results ->
     </button>
   </div>
