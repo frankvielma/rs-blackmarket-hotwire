@@ -11,14 +11,19 @@
       </div>
       <div class="flex justify-between">
         <div>Your filters will appear here.</div>
-        <div><%= image_tag 'filter_list.svg' %></div>
+        <button class="filter-burger" data-controller="filter" >
+          <%= image_tag 'filter_list.svg', class: "cursor-pointer", data: { action: "click->filter#toggle" } %>
+        </button>
       </div>
     </div>
-    <% @products.each do |product| %>
-      <% cache product do %>
-        <%= render(ProductComponent.new(product: product)) %>
+    <%= render FilterMobileComponent.new() %>
+    <div id="products">
+      <% @products.each do |product| %>
+        <% cache product do %>
+          <%= render(ProductComponent.new(product: product)) %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <div class="text-black text-center mt-8 mb-8">
     <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>

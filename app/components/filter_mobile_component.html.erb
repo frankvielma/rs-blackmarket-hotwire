@@ -1,0 +1,35 @@
+<div class="filter-menu z-1 hidden text-sm ml-2 mt-4" data-controller="filter">
+  <div class="font-bold">Filter by</div>
+  <%= form_with action: products_path, method: :get, class: "flex-grow " do |form| %>
+    <%= render ConditionComponent.new() %>
+    <div class="mt-4 flex flex-col gap-2">
+      <%= render CategoryComponent.new() %>
+    </div>
+    <div class="mt-4">
+      <div class="font-bold">Price:</div>
+      <div class="flex gap-2 justify-between mr-2">
+        <div class="mt-4 w-44 flex flex-col gap-2">
+          Min
+          <input type="text" placeholder="Type minumum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+        </div>
+        <div class="mt-4 w-44 flex flex-col gap-2">
+          Max
+          <input type="text" placeholder="Type maximum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 mt-4">
+      <div class="font-bold">
+        Sort by
+      </div>
+      <select name="products" id="sortby" class="rounded-md h-9 mr-2">
+        <option value="recent">Most Recent</option>
+      </select>
+    </div>
+    <div class="flex mt-6 mb-6 mr-2">
+      <button class="flex-grow text-white text-center w-[100px] rounded-md pl-2 pr-2 pb-1 bg-black h-8" type="submit" data-controller="clear-search" data-action="click->clear-search#clearSearch">
+        See results ->
+      </button>
+    </div>
+  <% end %>
+</div>
