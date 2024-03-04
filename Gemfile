@@ -26,7 +26,7 @@ gem 'yaaf', '~> 2.2'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
-  gem 'dotenv-rails', '~> 2.8.1'
+  gem 'dotenv-rails', '~> 3.1.0'
   gem 'factory_bot_rails', '~> 6.4'
   gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'pry-rails', '~> 0.3.9'
