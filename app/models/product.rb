@@ -31,7 +31,13 @@ class Product < ApplicationRecord
   default_scope -> { order(:id) }
   scope :featured, -> { order('random()').limit(4) }
 
-  def self.search_products(query, state)
+  def self.search_products(params)
+    query = params[:query]
+    state = params[:state]
+    categories_id = params[:categories_id]
+
+    return where(category_id: categories_id) if categories_id.present?
+
     state_id = Product.states[state]
     if state_id.present?
       where('(title ILIKE ? OR description ILIKE ?) AND state = ?', "%#{query}%", "%#{query}%", state_id)

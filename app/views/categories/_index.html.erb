@@ -1,0 +1,7 @@
+<select name="categories_id" class="rounded-md" >
+  <% @categories.each do |category| %>
+    <option value="<%= category.id %>" data-action="click->filter#select">
+      <%= category.name %>
+    </option>
+  <% end %>
+</select>
