@@ -2,6 +2,13 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
+  devise_for :admin_users
+  authenticate :admin_user do
+    mount Motor::Admin => '/admin'
+  end
+
+  # mount Motor::Admin => '/motor_admin'
+
   get 'errors/not_found'
   get 'errors/internal_server_error'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
