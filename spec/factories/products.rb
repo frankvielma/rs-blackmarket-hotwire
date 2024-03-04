@@ -17,12 +17,12 @@
 #
 FactoryBot.define do
   factory :product do
-    title { 'MyString' }
-    description { 'MyText' }
-    state { 1 }
-    stock { 1 }
-    unit_price_cents { 1 }
-    unit_price_currency { 'MyString' }
-    category_id { 1 }
+    title { Faker::Commerce.product_name }
+    description { Faker::Lorem.paragraph }
+    stock { Faker::Number.between(from: 0, to: 100) }
+    unit_price_cents { Faker::Commerce.price * 100 }
+    unit_price_currency { %i[USD EUR BTC].sample }
+    state { Product.states.values.sample }
+    category
   end
 end
