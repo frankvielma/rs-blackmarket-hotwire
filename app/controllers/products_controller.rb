@@ -6,8 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     query = params[:query]
-    state = params[:state]
-    products = search_products(query, state)
+    products = search_products(params)
     paginate_products(products)
     return if query.blank?
 
@@ -29,8 +28,11 @@ class ProductsController < ApplicationController
 
   private
 
-  def search_products(query, state)
-    query.present? || state.present? ? Product.search_products(query, state) : Product.all
+  def search_products(params)
+    query = params[:query]
+    state = params[:state]
+    categories_id = params[:categories_id]
+    query.present? || state.present? || categories_id.present? ? Product.search_products(params) : Product.all
   end
 
   def paginate_products(products)
