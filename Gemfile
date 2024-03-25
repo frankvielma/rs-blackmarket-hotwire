@@ -65,7 +65,12 @@ group :test do
   gem 'selenium-webdriver', '~> 4.19.0'
   gem 'shoulda-matchers', '~> 6.2'
   gem 'simplecov', '~> 0.22.0', require: false
+<<<<<<< HEAD
   gem 'webmock', '~> 3.23'
+=======
+  gem 'super_diff', '~> 0.11.0'
+  gem 'webmock', '~> 3.19'
+>>>>>>> f1eeb44 (add super_diff)
 end
 
 group :assets do
