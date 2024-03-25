@@ -2,6 +2,6 @@
 
 class SearchBarComponentPreview < ViewComponent::Preview
   def default
-    render(SearchBarComponent.new)
+    render(SearchBarComponent.new(placeholder: 'Search for products'))
   end
 end
