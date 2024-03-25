@@ -1,0 +1,26 @@
+<%= form_with action: products_path, method: :get, class: "flex-grow" do |form| %>
+  <%= render ConditionComponent.new() %>
+  <div class="mt-4">
+    <%= render CategoryComponent.new() %>
+  </div>
+  <div class="mt-4">
+    <div class="font-bold">Price:</div>
+    <div class="mt-4 w-44 flex flex-col gap-2">
+      <div class="">
+        Min
+      </div>
+      <input type="text" placeholder="Type minumum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+    </div>
+    <div class="mt-4 w-44 flex flex-col gap-2">
+      <div class="">
+        Max
+      </div>
+      <input type="text" placeholder="Type maximum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
+    </div>
+  </div>
+  <div class="mt-6 mb-6">
+    <button class="text-white text-center rounded-md pl-2 pr-2 pb-1 bg-black h-8" type="submit" data-controller="clear-search" data-action="click->clear-search#clearSearch">
+      See results ->
+    </button>
+  </div>
+<% end %>

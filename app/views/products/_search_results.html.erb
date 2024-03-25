@@ -1,10 +1,29 @@
 <div class="lg:hidden">
   <div class="flex flex-col text-black shadow-sm mt-2">
-    <% @products.each do |product| %>
-      <% cache product do %>
-        <%= render(ProductComponent.new(product: product)) %>
+    <div class="flex flex-col text-sm ml-2 mr-2 gap-2">
+      <div class="flex justify-between">
+        <div>
+          You searched for “<span class="font-bold" id="searched-for-mobile">...</span>”
+        </div>
+        <div>
+          <%= link_to "Clear all", '#', class: "text-[#076CE0]", "data-controller": "clear-search", "data-action": "click->clear-search#clearSearch" %>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <div>Your filters will appear here.</div>
+        <button class="filter-burger" data-controller="filter" >
+          <%= image_tag 'filter_list.svg', class: "cursor-pointer", data: { action: "click->filter#toggle" } %>
+        </button>
+      </div>
+    </div>
+    <%= render FilterMobileComponent.new() %>
+    <div id="products">
+      <% @products.each do |product| %>
+        <% cache product do %>
+          <%= render(ProductComponent.new(product: product)) %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <div class="text-black text-center mt-8 mb-8">
     <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
@@ -15,63 +34,21 @@
     <div class="w-52 font-bold text-xl">Filters</div>
     <div class="w-[744px] flex justify-between">
       <div class="text-xl">
-        You searched for “<span class="font-bold" id="searched_for">...</span>”
+        You searched for “<span class="font-bold" id="searched-for-desktop">...</span>”
       </div>
       <div class="text-sm flex items-center gap-4">
         <div class="font-bold">
           Sort by
         </div>
         <select name="products" id="sortby" class="rounded-md h-9 text-sm">
-          <option value="volvo">Most Recent</option>
+          <option value="recent">Most Recent</option>
         </select>
       </div>
     </div>
   </div>
   <div class="flex gap-4 justify-center">
     <div class="text-sm w-52">
-      <div class="mt-4">
-        <div class="font-bold">Condition:</div>
-        <fieldset class="mt-2">
-          <div>
-            <input type="radio" id="new" name="condition" value="new" checked />
-            <label for="new">New</label>
-          </div>
-          <div>
-            <input type="radio" id="used" name="condition" value="used" />
-            <label for="used">Used</label>
-          </div>
-          <div>
-            <input type="radio" id="refurbhished" name="condition" value="refurbhished" />
-            <label for="refurbhished">Refurbhised</label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="mt-4">
-        <div class="font-bold">Category:</div>
-        <div class="mt-4 w-44">
-          <%= render(SearchBarComponent.new(placeholder: 'Search')) %>
-        </div>
-      </div>
-      <div class="mt-4">
-        <div class="font-bold">Price:</div>
-        <div class="mt-4 w-44 flex flex-col gap-2">
-          <div class="">
-            Min
-          </div>
-          <input type="text" placeholder="Type minumum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
-        </div>
-        <div class="mt-4 w-44 flex flex-col gap-2">
-          <div class="">
-            Max
-          </div>
-          <input type="text" placeholder="Type maximum" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black"/>
-        </div>
-      </div>
-      <div class="mt-6 mb-6">
-        <button class="text-white text-center rounded-md pl-2 pr-2 pb-1 bg-black h-8">
-          See results ->
-        </button>
-      </div>
+      <%= render(FiltersComponent.new()) %>
     </div>
     <div class="flex flex-col">
       <div class="flex flex-col shadow-sm mt-2 gap-2">

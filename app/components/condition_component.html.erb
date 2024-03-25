@@ -1,0 +1,17 @@
+<div class="mt-4">
+  <div class="font-bold">Condition:</div>
+  <fieldset class="mt-2">
+    <div>
+      <input type="radio" id="new" name="state" value="is_new" <%= 'checked' if params[:state] == 'is_new' %> />
+      <label for="new">New</label>
+    </div>
+    <div>
+      <input type="radio" id="used" name="state" value="used" <%= 'checked' if params[:state] == 'used' %> />
+      <label for="used">Used</label>
+    </div>
+    <div>
+      <input type="radio" id="refurbhished" name="state" value="restored" <%= 'checked' if params[:state] == 'restored' %> />
+      <label for="refurbhished">Refurbhised</label>
+    </div>
+  </fieldset>
+</div>

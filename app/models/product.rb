@@ -31,8 +31,13 @@ class Product < ApplicationRecord
   default_scope -> { order(:id) }
   scope :featured, -> { order('random()').limit(4) }
 
-  def self.search_products(query)
-    where('title ILIKE ? OR description ILIKE ?', "%#{query}%", "%#{query}%")
+  def self.search_products(query, state)
+    state_id = Product.states[state]
+    if state_id.present?
+      where('(title ILIKE ? OR description ILIKE ?) AND state = ?', "%#{query}%", "%#{query}%", state_id)
+    else
+      where('title ILIKE ? OR description ILIKE ?', "%#{query}%", "%#{query}%")
+    end
   end
 
   def price
