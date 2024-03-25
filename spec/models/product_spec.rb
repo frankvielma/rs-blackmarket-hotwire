@@ -35,7 +35,7 @@ RSpec.describe Product do
   # Enums
   describe 'enums' do
     it { is_expected.to define_enum_for(:unit_price_currency).with_values(USD: 0, EUR: 1, BTC: 2) }
-    it { is_expected.to define_enum_for(:state).with_values(used: 0, not_used: 1, restored: 2) }
+    it { is_expected.to define_enum_for(:state).with_values(used: 0, is_new: 1, restored: 2) }
   end
 
   it 'does not allow negative stock' do

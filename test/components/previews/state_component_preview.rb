@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class StateComponentPreview < ViewComponent::Preview
-  def not_used_state
-    render(StateComponent.new(state: 'not_used'))
+  def new_state
+    render(StateComponent.new(state: 'is_new'))
   end
 
   def used_state
