@@ -2,6 +2,6 @@
 
 class HeaderComponentPreview < ViewComponent::Preview
   def default
-    render(HeaderComponent.new)
+    render(HeaderComponent.new(featured: true))
   end
 end

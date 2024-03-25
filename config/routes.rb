@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
+  # post 'products/:id/favorite', to: 'products#favorite'
+
+  resources :products do
+    get 'index', on: :collection
+    post 'favorite', on: :member
+  end
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all

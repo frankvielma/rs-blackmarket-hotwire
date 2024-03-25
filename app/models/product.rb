@@ -19,11 +19,18 @@ class Product < ApplicationRecord
   belongs_to :category
 
   enum unit_price_currency: { USD: 0, EUR: 1, BTC: 2 }
-  enum state: { used: 0, not_used: 1, refurbished: 2 }
+  enum state: { used: 0, not_used: 1, restored: 2 }
 
   validates :title, :description, :unit_price_cents, :unit_price_currency, presence: true
   validates :stock, numericality: { greater_than_or_equal_to: 0 }
   validates :unit_price_cents, numericality: { greater_than_or_equal_to: 0 }
 
   has_one_attached :image
+  has_many :favorite_products, dependent: :destroy
+
+  scope :featured, -> { order('random()').limit(4) }
+
+  def price
+    unit_price_cents / 100
+  end
 end
