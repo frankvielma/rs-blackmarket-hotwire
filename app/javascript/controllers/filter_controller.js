@@ -24,7 +24,6 @@ export default class extends Controller {
     })
   }
 
-
   select(event) {
     this.submitFormTarget.submit();
   }
