@@ -1,7 +1,7 @@
 <%= form_with action: products_path, method: :get, class: "flex-grow" do |form| %>
   <%= render ConditionComponent.new() %>
   <div class="mt-4">
-    <%= render CategoryComponent.new() %>
+    <%= render CategoryComponent.new(type: 'desktop') %>
   </div>
   <div class="mt-4">
     <div class="font-bold">Price:</div>

@@ -2,6 +2,6 @@
 
 class CategoryComponentPreview < ViewComponent::Preview
   def default
-    render(CategoryComponent.new)
+    render(CategoryComponent.new(type: 'desktop'))
   end
 end

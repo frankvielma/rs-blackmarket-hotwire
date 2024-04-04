@@ -8,8 +8,9 @@
       </button>
     </div>
   </div>
-  <div id="listMobile">
-  </div>
-  <div id="listDesktop">
-  </div>
+  <% if @type == 'mobile' %>
+    <div id="listMobile"></div>
+  <% else %>
+    <div id="listDesktop"></div>
+  <% end %>
 </div>
