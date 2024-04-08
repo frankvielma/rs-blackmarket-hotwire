@@ -1,0 +1,66 @@
+<div class="lg:hidden">
+  <div class="flex flex-col text-black shadow-sm mt-2">
+    <div class="flex flex-col text-sm ml-2 mr-2 gap-2">
+      <div class="flex justify-between">
+        <div>
+          You searched for “<span class="font-bold" id="searched-for-mobile">...</span>”
+        </div>
+        <div>
+          <%= link_to "Clear all", products_path, class: "text-[#076CE0]", "data-controller": "clear-search", "data-action": "click->clear-search#clearSearch" %>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <div>Your filters will appear here.</div>
+        <button class="filter-burger" data-controller="filter" >
+          <%= image_tag 'filter_list.svg', class: "cursor-pointer", data: { action: "click->filter#toggle" } %>
+        </button>
+      </div>
+    </div>
+    <%= render FilterMobileComponent.new() %>
+    <div id="products">
+      <% @products.each do |product| %>
+        <% cache product do %>
+          <%= render(ProductComponent.new(product: product)) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-black text-center mt-8 mb-8">
+    <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
+  </div>
+</div>
+<div class="lg:block hidden text-black">
+  <div class="flex gap-4 justify-center items-center">
+    <div class="w-52 font-bold text-xl">Filters</div>
+    <div class="w-[744px] flex justify-between">
+      <div class="text-xl">
+        You searched for “<span class="font-bold" id="searched-for-desktop">...</span>”
+      </div>
+      <div class="text-sm flex items-center gap-4">
+        <div class="font-bold">
+          Sort by
+        </div>
+        <select name="products" id="sortby" class="rounded-md h-9 text-sm">
+          <option value="recent">Most Recent</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-4 justify-center">
+    <div class="text-sm w-52">
+      <%= render(FiltersComponent.new()) %>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex flex-col shadow-sm mt-2 gap-2">
+        <% @products.each do |product| %>
+          <% cache product do %>
+            <%= render(ProductComponent.new(product: product)) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="text-black text-center mt-8 mb-8">
+        <%== render partial: 'pagy/nav', locals: {pagy: @pagy} %>
+      </div>
+    </div>
+  </div>
+</div>

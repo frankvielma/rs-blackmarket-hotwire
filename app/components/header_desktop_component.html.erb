@@ -1,0 +1,12 @@
+<div class="hidden lg:mx-auto lg:flex lg:w-auto lg:space-x-6 lg:justify-between h-14">
+  <%= render LogoComponent.new(title: 'Login', type: 'white') %>
+  <div class="lg:w-[28.5rem]">
+    <%= render SearchBarComponent.new(placeholder: 'Search for products', size: 'desktop') %>
+  </div>
+  <div>
+    <%= render MyaccountComponent.new() %>
+  </div>
+  <div>
+    <%= render ShoppingCartComponent.new() %>
+  </div>
+</div>

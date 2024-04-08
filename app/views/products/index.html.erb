@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-12 bg-slate-100" >
+  <%= render(HeaderComponent.new(featured: false)) %>
+  <%= turbo_frame_tag "main" do %>
+    <%= render partial: 'products/search_results' %>
+  <% end %>
+  <%= render(FooterComponent.new()) %>
+</div>

@@ -1,0 +1,28 @@
+<div class="flex flex-col gap-2">
+  <div class="font-bold">Category:</div>
+  <div class="relative container flex w-full text-white" data-controller="filter">
+    <input id="categories" placeholder="Search" class="h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black mr-2" type="text" autocomplete="off" data-action="input->filter#categories" data-filter-target="category" />
+    <div class="absolute inset-y-0 right-[1rem] flex items-center cursor-pointer">
+      <button>
+        <%= image_tag 'magnifying-glass.svg' %>
+      </button>
+    </div>
+  </div>
+  <% if @type == 'mobile' %>
+    <div id="listMobile"></div>
+  <% else %>
+    <div id="listDesktop"></div>
+  <% end %>
+</div>
+<div class="flex flex-row gap-2">
+  <% if params[:categories_id] %>
+    <div class="">
+      <%= Category.find(params[:categories_id]).name %>
+    </div>
+    <button class="close-category" title="Remove">
+      <svg class="h-6 w-6 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  <% end %>
+</div>

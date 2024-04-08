@@ -11,6 +11,7 @@ gem 'draper', '~> 4.0', '>= 4.0.1'
 gem 'importmap-rails', '~> 2.0.1'
 gem 'jbuilder', '~> 2.11.5'
 gem 'lograge', '~> 0.14'
+gem 'motor-admin', '~> 0.4.26'
 gem 'newrelic_rpm', '~> 9.8'
 gem 'oj', '~> 3.16'
 gem 'pagy', '~> 6.4'
@@ -65,6 +66,7 @@ group :test do
   gem 'selenium-webdriver', '~> 4.19.0'
   gem 'shoulda-matchers', '~> 6.2'
   gem 'simplecov', '~> 0.22.0', require: false
+  gem 'super_diff', '~> 0.11.0'
   gem 'webmock', '~> 3.23'
 end
 

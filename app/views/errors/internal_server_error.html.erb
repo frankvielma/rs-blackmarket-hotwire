@@ -1,3 +1,13 @@
-<div class="h-screen flex items-center justify-center">
-  Internal error server
+<div class="flex flex-col gap-12 bg-slate-100" >
+  <%= render(HeaderComponent.new(featured: false)) %>
+  <div class="flex flex-col text-black mt-2 w-screen items-center justify-center gap-4">
+    <%= image_tag 'something_wrong.svg' %>
+    <div class="font-bold">
+      Oops... something went wrong
+    </div>
+    <div class="w-[80%] text-base text-center">
+      Please try again later, we are taking care of the problem.
+    </div>
+  </div>
+  <%= render(FooterComponent.new()) %>
 </div>

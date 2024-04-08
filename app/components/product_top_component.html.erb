@@ -1,0 +1,29 @@
+<div class="lg:hidden flex flex-col gap-4 overflow-hidden">
+  <section id="featured-products-container" class="w-[120px] text-black flex mt-4 ml-4 gap-4 mb-0">
+    <h1 class="sr-only"></h1>
+    <% Product.featured.each do |product| %>
+      <div class="flex flex-col items-center">
+        <div class="w-[120px] h-[120px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center shadow-2xl">
+          <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
+        </div>
+        <div class="bg-white text-sm pt-2 shadow-inner">
+          <div class="flex gap-3 justify-center">
+            <div>
+              $<%= product.price %>
+            </div>
+            <div class="text-white">
+              <%= render(StateComponent.new(state: product.state)) %>
+            </div>
+          </div>
+          <div class="flex gap-4 mt-4 ml-2 mr-2">
+            <div>
+              <%= product.title.truncate(9) %>
+            </div>
+            <%= render(FavoriteComponent.new(product_id: product.id)) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+  <%= render(SeeAllProductsComponent.new()) %>
+</div>
