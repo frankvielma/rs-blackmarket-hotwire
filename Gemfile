@@ -58,7 +58,7 @@ group :test do
   gem 'faker', '~> 3.2'
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
-  gem 'parallel_tests', '~> 4.5'
+  gem 'parallel_tests', '~> 4.6'
   gem 'pg_query', '~> 5.1.0'
   gem 'prosopite', '~> 1.4.2'
   gem 'rspec-rails', '~> 6.1'
