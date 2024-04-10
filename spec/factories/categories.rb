@@ -17,7 +17,7 @@
 #
 FactoryBot.define do
   factory :category do
-    name { Faker::Commerce.department }
+    name { Faker::Commerce.department + '-' + rand(10).to_s }
 
     factory :category_with_products do
       transient do
