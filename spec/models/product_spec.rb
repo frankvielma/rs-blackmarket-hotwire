@@ -80,7 +80,7 @@ RSpec.describe Product do
 
     context 'with query only' do
       it 'returns products matching query' do
-        expect(described_class.search_products(query: 'cool')).to include(cool_gadget_product, awesome_toy_cool)
+        expect(described_class.search_products(query: 'cool')).to eq([cool_gadget_product, awesome_toy_cool])
       end
     end
 
