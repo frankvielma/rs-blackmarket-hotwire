@@ -17,8 +17,8 @@
     <div class="pl-20">
       <%= render(FavoriteComponent.new(product_id: @product.id)) %>
     </div>
-    <div class="text-white w-max text-center rounded-md pl-2 pr-2 pb-1 bg-black">
-      Add to Cart
+    <div class="pl-10">
+      <%= render(CartButtonComponent.new(product: @product)) %>
     </div>
   </div>
 </div>
