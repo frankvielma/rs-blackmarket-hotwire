@@ -27,6 +27,7 @@ class Product < ApplicationRecord
 
   has_one_attached :image
   has_many :favorite_products, dependent: :destroy
+  has_many :shopping_carts, dependent: :destroy
 
   default_scope -> { order(:id) }
   scope :featured, -> { order('random()').limit(4) }
@@ -47,6 +48,6 @@ class Product < ApplicationRecord
   end
 
   def price
-    unit_price_cents / 100
+    unit_price_cents / 100.0
   end
 end

@@ -32,10 +32,11 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
 
   has_many :favorite_products, dependent: :destroy
+  has_many :shopping_carts, dependent: :destroy
 
   def full_name
     return username if first_name.blank?
 
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".strip
   end
 end

@@ -1,0 +1,5 @@
+<div data-controller="cart" data-cart-product_id-value="<%= @product.id %>" data-action="click->cart#togglecart keydown->cart#handleKeyPress" title="<%= @product.title %>">
+  <button data-cart-target="slide" id="cart-<%= @product.id %>" aria-describedby="cart button" class="w-max text-center rounded-md pl-2 pr-2 <%= shopping_cart? %>">
+    Add to Cart
+  </button>
+</div>
