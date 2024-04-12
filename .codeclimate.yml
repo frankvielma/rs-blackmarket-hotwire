@@ -57,3 +57,6 @@ plugins:
       - spec/**/*
 exclude_patterns:
   - 'babel.config.js'
+  - 'app/assets/stylesheets/application.tailwind.cs'
+  - 'db/'
+  - 'bin/'
