@@ -3,13 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe CategoryComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Category component' do
+    it 'renders the button' do
+      render_inline(described_class.new(type: 'mobile'))
+      expect(page).to have_button
+    end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+    it 'renders id mobile' do
+      render_inline(described_class.new(type: 'mobile'))
+      expect(page).to have_xpath('//div[@id="listMobile"]')
+    end
+
+    it 'renders id desktop' do
+      render_inline(described_class.new(type: 'desktop'))
+      expect(page).to have_xpath('//div[@id="listDesktop"]')
+    end
+  end
 end

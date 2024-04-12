@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe ConditionComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Condition component' do
+    before do
+      render_inline(described_class.new)
+    end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+    it 'renders the shipment component' do
+      text = page.find_xpath('//div[@class="font-bold"]').text
+      expect(text).to eq('Condition:')
+    end
+  end
 end
