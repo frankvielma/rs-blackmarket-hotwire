@@ -26,6 +26,19 @@ class ProductsController < ApplicationController
     render json: {}
   end
 
+  def shopping_carts
+    @product = Product.find(params[:id])
+    shopping_carts_products = @product.shopping_carts
+
+    if shopping_carts_products.any?
+      shopping_carts_products.destroy_all
+    else
+      shopping_carts_products.create!(user: current_user)
+    end
+
+    render json: { id: @product.id }
+  end
+
   private
 
   def search_products(params)

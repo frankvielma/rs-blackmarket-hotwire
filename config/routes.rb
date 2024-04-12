@@ -22,11 +22,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
-  # post 'products/:id/favorite', to: 'products#favorite'
 
   resources :products do
     get 'index', on: :collection
     post 'favorite', on: :member
+    post 'shopping_carts', on: :member
   end
 
   get 'categories/search' => 'categories#search', as: :search
