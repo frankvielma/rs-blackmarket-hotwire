@@ -57,25 +57,20 @@ export default class extends Controller {
   }
 
   toggleVisibility(event) {
-    if (user_password.type === "password") {
-      this.findVisibilityOff().forEach(img => img.classList.add('hidden'));
-      this.findVisibilityOn().forEach(img => img.classList.remove('hidden'));
-      user_password.type = "text";
-      if (typeof user_password_confirmation !== "undefined") {
-        user_password_confirmation.type = "text";
-      }
-    } else {
-      this.findVisibilityOff().forEach(img => img.classList.remove('hidden'));
-      this.findVisibilityOn().forEach(img => img.classList.add('hidden'));
-      user_password.type = "password";
-      if (typeof user_password_confirmation !== "undefined") {
-        user_password_confirmation.type = "password";
-      }
+    const isCurrentlyPassword = user_password.type === "password";
+    const newType = isCurrentlyPassword ? "text" : "password";
+
+    this.findVisibilityOff().forEach(img => img.classList.toggle('hidden'));
+    this.findVisibilityOn().forEach(img => img.classList.toggle('hidden'));
+
+    user_password.type = newType;
+    if (typeof user_password_confirmation !== "undefined") {
+      user_password_confirmation.type = newType;
     }
   }
-   
+
   showValidationForTarget(target, isValid) {
-    let errorMessage = ''
+    let errorMessage = '';
 
     if (target === 'email') {
       errorMessage = "Invalid email address.";
@@ -85,12 +80,12 @@ export default class extends Controller {
     }
 
     if (isValid) {
-      error.classList.remove("visible")
+      error.classList.remove("visible");
       error.classList.add("invisible")
     } else {
       error.innerText = errorMessage;
       error.classList.add("visible");
-      error.classList.remove("invisible")
+      error.classList.remove("invisible");
       submitButton.className = "h-[44px] rounded-md text-white w-full bg-light-gray font-bold text-white outline-none cursor-not-allowed";
     }
   }
