@@ -15,16 +15,17 @@
       </div>
     </div>
   </div>
-  <div class= "flex text-sm pt-2 w-1/4 ml-6 ">
-    <div class="flex flex-col gap-3">
-      <div class="flex mt-4">
-        <%= @product.price %>
+  <div class="text-sm pt-2 w-1/4 ml-6 flex flex-col justify-around">
+    <div class="flex mt-4">
+      $
+      <%= @product.price %>
+    </div>
+    <div class="flex gap-4 items-center">
+      <div class="py-1">
+        <%= image_tag "delete.svg", id: 'delete-cart' %>
       </div>
-      <div class="text-white">
-      </div>
-      <div>
-        - 1 +
-      </div>
+      <div class="py-1">1</div>
+      <div class="text-xl">+</div>
     </div>
   </div>
 </div>
