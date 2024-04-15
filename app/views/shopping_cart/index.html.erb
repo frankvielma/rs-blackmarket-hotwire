@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-12 bg-slate-100 text-black">
+  <%= render(HeaderComponent.new(featured: false)) %>
+  <div id="carts" class="flex flex-col gap-4 items-center">
+    <div class="w-1/2 justify-start bg-white p-8 rounded-xl">
+      <div class="text-left">
+        <h1>My Shopping Cart</h1>
+      </div>
+      <div class="pt-8">
+        <% @cart_items.each do |item| %>
+          <%= render(CartComponent.new(product: item.product)) %>
+        <% end %>
+      </div>
+      <div class="flex justify-between pt-8">
+        <div class="">
+          TOTAL
+        </div>
+        <div class="flex-grow">
+          <hr class="ml-4 mr-4 h-[1px] my-5 bg-black border-1 rounded">
+        </div>
+        <div>
+          <button class="rounded-lg pl-2 pr-2 text-white bg-black">
+            Go to checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render(FooterComponent.new()) %>
+</div>
