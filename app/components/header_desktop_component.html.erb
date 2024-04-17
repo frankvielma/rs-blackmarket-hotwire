@@ -7,6 +7,8 @@
     <%= render MyaccountComponent.new() %>
   </div>
   <div>
-    <%= render ShoppingCartComponent.new() %>
+    <turbo-frame id="toggle-shopping-product">
+      <%= render ShoppingCartComponent.new() %>
+    </turbo-frame>
   </div>
 </div>
