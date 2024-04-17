@@ -1,0 +1,8 @@
+<div class="flex flex-col gap-12 bg-slate-100 text-black">
+  <%= render(HeaderComponent.new(featured: false)) %>
+  <%= turbo_frame_tag 'main' do %>
+    <%= render partial: 'shopping_cart/search_results', locals: { cart_items: cart_items, total: total } %>
+  <% end %>
+
+  <%= render(FooterComponent.new()) %>
+</div>

@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     post 'shopping_carts', on: :member
   end
 
+  resources :shopping_cart do
+    get 'index', on: :collection
+  end
+
   get 'categories/search' => 'categories#search', as: :search
 
   match '/404', to: 'errors#not_found', via: :all
