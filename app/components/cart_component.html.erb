@@ -1,31 +1,67 @@
-<div class="flex w-full bg-white text-black font-semibold rounded-lg border-[1px] border-gray m-2" >
-  <div class="h-[120px] w-[240px] flex items-center justify-center bg-white rounded-lg">
-    <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
-  </div>
-  <div class= "flex text-sm pt-2 h-[120px] w-3/4 ml-6">
-    <div class="flex flex-col gap-3">
-      <div class="flex mt-4">
-        <%= @product.title.truncate(16) %>
+<div class="lg:hidden">
+  <div class="flex w-full bg-white text-black font-semibold rounded-lg border-[1px] border-gray m-2" >
+    <div class="h-[120px] w-[240px] flex items-center justify-center bg-white rounded-lg">
+      <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
+    </div>
+    <div class= "flex text-sm pt-2 h-[120px] w-full ml-6">
+      <div class="flex flex-col gap-3">
+        <div class="flex mt-4 text-l">
+          <%= @product.title.truncate(10) %>
+        </div>
+        <div class="text-white">
+          <%= render(StateComponent.new(state: @product.state)) %>
+        </div>
+        <div>
+          <%= link_to 'Removet it', '#', class: "text-[#076CE0]" %>
+        </div>
       </div>
-      <div class="text-white">
-        <%= render(StateComponent.new(state: @product.state)) %>
+    </div>
+    <div class="text-sm pt-2 w-full ml-6 flex flex-col justify-around">
+      <div class="flex mt-4 text-l">
+        <div>$</div>
+        <div><%= sprintf('%.2f', @product.price) %></div>
       </div>
-      <div>
-        <%= link_to 'Removet it', '#', class: "text-[#076CE0]" %>
+      <div class="flex gap-4 items-center">
+        <div class="py-1">
+          <%= image_tag "delete.svg", id: 'delete-cart' %>
+        </div>
+        <div class="py-1">1</div>
+        <div class="text-xl">+</div>
       </div>
     </div>
   </div>
-  <div class="text-sm pt-2 w-1/4 ml-6 flex flex-col justify-around">
-    <div class="flex mt-4 ml-4">
-      $
-      <%= sprintf('%.2f', @product.price) %>
+</div>
+
+<div class="lg:block hidden mx-auto text-black">
+  <div class="flex w-full bg-white text-black font-semibold rounded-lg border-[1px] border-gray m-2" >
+    <div class="h-[120px] w-[240px] flex items-center justify-center bg-white rounded-lg">
+      <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
     </div>
-    <div class="flex gap-4 items-center">
-      <div class="py-1">
-        <%= image_tag "delete.svg", id: 'delete-cart' %>
+    <div class= "flex text-sm pt-2 h-[120px] w-3/4 ml-6">
+      <div class="flex flex-col gap-3">
+        <div class="flex mt-4">
+          <%= @product.title.truncate(16) %>
+        </div>
+        <div class="text-white">
+          <%= render(StateComponent.new(state: @product.state)) %>
+        </div>
+        <div>
+          <%= link_to 'Removet it', '#', class: "text-[#076CE0]" %>
+        </div>
       </div>
-      <div class="py-1">1</div>
-      <div class="text-xl">+</div>
+    </div>
+    <div class="text-sm pt-2 w-1/4 ml-6 flex flex-col justify-around">
+      <div class="flex mt-4 ml-4">
+        $
+        <%= sprintf('%.2f', @product.price) %>
+      </div>
+      <div class="flex gap-4 items-center">
+        <div class="py-1">
+          <%= image_tag "delete.svg", id: 'delete-cart' %>
+        </div>
+        <div class="py-1">1</div>
+        <div class="text-xl">+</div>
+      </div>
     </div>
   </div>
 </div>
