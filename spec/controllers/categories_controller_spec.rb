@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: categories
+#
+#  id                 :bigint           not null, primary key
+#  name               :string
+#  description        :text
+#  parent_category_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+# Indexes
+#
+#  index_categories_on_name_and_parent_category_id  (name,parent_category_id) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe CategoriesController do
