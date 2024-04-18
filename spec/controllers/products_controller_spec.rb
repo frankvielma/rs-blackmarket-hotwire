@@ -64,4 +64,22 @@ RSpec.describe ProductsController do
       end
     end
   end
+
+  describe 'POST #shopping_carts' do
+    let(:current_user) { create(:user, password: 'password', password_confirmation: 'password') }
+    let(:product) { create(:product) }
+
+    before { sign_in(current_user) }
+
+    context 'when product exists' do
+      it 'creates a new ShoppingCart and LineItem for the current user' do
+        expect { post :shopping_carts, params: { id: product.id } }.to change(ShoppingCart, :count).by(1)
+        expect(ShoppingCart.last.user).to eq(current_user)
+        expect(ShoppingCart.last.line_items.last.product).to eq(product)
+        expect(ShoppingCart.last.line_items.last.quantity).to eq(1)
+        expect(response).to have_http_status(:ok)
+        expect(response.parsed_body['id']).to eq(product.id.to_s)
+      end
+    end
+  end
 end
