@@ -1,0 +1,14 @@
+<div class="py-1 cursor-pointer" data-controller="shopping-cart" data-action="click->shopping-cart#remove" data-shopping-cart-product_id-value="<%= @product.id %>" >
+  <%= image_tag "delete.svg", id: 'delete-cart' %>
+</div>
+
+<div class="text-xl py-1 cursor-pointer" data-controller="shopping-cart" data-action="click->shopping-cart#substract" data-shopping-cart-product_id-value="<%= @product.id %>" >
+  -
+</div>
+
+<div class="py-1">
+  <%= @product.shopping_carts.first.line_items.first.quantity %>
+</div>
+<div class="text-xl py-1 cursor-pointer" data-controller="shopping-cart" data-action="click->shopping-cart#add" data-shopping-cart-product_id-value="<%= @product.id %>" >
+  +
+</div>

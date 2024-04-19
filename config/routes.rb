@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :shopping_cart do
     get 'index', on: :collection
     delete 'destroy', on: :member
-    put 'update', on: :member
+    put ':id/:operation', action: :update
   end
 
   get 'categories/search' => 'categories#search', as: :search

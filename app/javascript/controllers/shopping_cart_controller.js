@@ -20,21 +20,25 @@ export default class extends Controller {
   }
 
   add() {
-    console.log("id: ", this.productIdValue);
+    this.operation('add');
+  }
 
-    let url = "/shopping_cart/" + this.productIdValue + '/update';
+  substract() {
+    this.operation('substract');
+  }
+
+
+  operation(type) {
+    let url = "/shopping_cart/update/" + this.productIdValue + '/' + type;
     let data = { id: this.productIdValue };
-
     fetch(url, {
       method: "PUT",
       headers: { "X-CSRF-Token": document.querySelector("[name='csrf-token']").content },
       body: JSON.stringify(data)
     })
       .then(response => response)
-  .then(data => {
-      Turbo.visit('/shopping_cart/index');
-  });
-
+      .then(data => {
+          Turbo.visit('/shopping_cart/index');
+      });
   }
-
 }
