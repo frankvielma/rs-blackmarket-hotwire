@@ -17,7 +17,7 @@ export default class extends Controller {
     })
       .then(response => response)
   .then(data => {
-      Turbo.visit('/shopping_cart/index', { progress: false });
+      Turbo.visit('/shopping_cart/index');
     });
   }
 
