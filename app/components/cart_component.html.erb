@@ -11,8 +11,8 @@
         <div class="text-white">
           <%= render(StateComponent.new(state: @product.state)) %>
         </div>
-        <div>
-          <%= link_to 'Removet it', '#', class: "text-[#076CE0]" %>
+        <div data-controller="shopping-cart" data-action="click->shopping-cart#remove" data-shopping-cart-product_id-value="<%= @product.id %>" class="text-[#076CE0] cursor-pointer">
+          Remove it
         </div>
       </div>
     </div>
@@ -22,11 +22,7 @@
         <div><%= sprintf('%.2f', @product.price) %></div>
       </div>
       <div class="flex gap-4 items-center">
-        <div class="py-1">
-          <%= image_tag "delete.svg", id: 'delete-cart' %>
-        </div>
-        <div class="py-1">1</div>
-        <div class="text-xl">+</div>
+        <%= render QuantityUpdaterComponent.new(product: @product) %>
       </div>
     </div>
   </div>
@@ -45,8 +41,8 @@
         <div class="text-white">
           <%= render(StateComponent.new(state: @product.state)) %>
         </div>
-        <div>
-          <%= link_to 'Removet it', '#', class: "text-[#076CE0]" %>
+        <div data-controller="shopping-cart" data-action="click->shopping-cart#remove" data-shopping-cart-product_id-value="<%= @product.id %>" class="text-[#076CE0] cursor-pointer">
+          Remove it
         </div>
       </div>
     </div>
@@ -56,11 +52,7 @@
         <%= sprintf('%.2f', @product.price) %>
       </div>
       <div class="flex gap-4 items-center">
-        <div class="py-1">
-          <%= image_tag "delete.svg", id: 'delete-cart' %>
-        </div>
-        <div class="py-1">1</div>
-        <div class="text-xl">+</div>
+        <%= render QuantityUpdaterComponent.new(product: @product) %>
       </div>
     </div>
   </div>

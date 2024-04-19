@@ -7,6 +7,6 @@ class CartButtonComponent < ViewComponent::Base
 
   def shopping_cart?
     shopping_cart = ShoppingCart.where(user_id: helpers.current_user.id, product_id: @product.id).any?
-    shopping_cart ? 'text-black bg-white border' : 'text-white bg-black'
+    shopping_cart ? 'text-white bg-black' : 'text-black bg-white border'
   end
 end

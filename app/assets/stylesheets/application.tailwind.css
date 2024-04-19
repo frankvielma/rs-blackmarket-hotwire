@@ -49,3 +49,8 @@ body {
 .link-active {
     @apply active:font-bold active:text-active;
 }
+
+
+.turbo-progress-bar {
+    visibility: hidden;
+}

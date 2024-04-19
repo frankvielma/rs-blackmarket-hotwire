@@ -16,8 +16,6 @@
 #  updated_at          :datetime         not null
 #
 class Product < ApplicationRecord
-  belongs_to :category
-
   enum unit_price_currency: { USD: 0, EUR: 1, BTC: 2 }
   enum state: { used: 0, is_new: 1, restored: 2 }
 
@@ -28,6 +26,8 @@ class Product < ApplicationRecord
   has_one_attached :image
   has_many :favorite_products, dependent: :destroy
   has_many :shopping_carts, dependent: :destroy
+  has_many :line_items, dependent: :destroy
+  belongs_to :category
 
   default_scope -> { order(:id) }
   scope :featured, -> { order('random()').limit(4) }
