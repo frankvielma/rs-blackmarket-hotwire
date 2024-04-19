@@ -18,8 +18,7 @@
     </div>
     <div class="text-sm pt-2 w-full ml-6 flex flex-col justify-around">
       <div class="flex mt-4 text-l">
-        <div>$</div>
-        <div><%= sprintf('%.2f', @product.price) %></div>
+        <div><%= number_to_currency(@product.price) %></div>
       </div>
       <div class="flex gap-4 items-center">
         <%= render QuantityUpdaterComponent.new(product: @product) %>
@@ -48,8 +47,7 @@
     </div>
     <div class="text-sm pt-2 w-1/4 ml-6 flex flex-col justify-around">
       <div class="flex mt-4 ml-4">
-        $
-        <%= sprintf('%.2f', @product.price) %>
+        <div><%= number_to_currency(@product.price) %></div>
       </div>
       <div class="flex gap-4 items-center">
         <%= render QuantityUpdaterComponent.new(product: @product) %>

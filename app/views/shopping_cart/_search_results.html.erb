@@ -17,8 +17,7 @@
           <hr class="ml-4 mr-4 h-[1px] my-5 bg-black border-1 rounded">
         </div>
         <div class="mr-4 ml-2">
-          <%= sprintf('%.2f', total) %>
-          $
+          <%= number_to_currency(total) %>
         </div>
         <div>
           <button class="rounded-lg p-2 text-white bg-black text-xs">
@@ -49,8 +48,7 @@
           <hr class="ml-4 mr-4 h-[1px] my-5 bg-black border-1 rounded">
         </div>
         <div class="mr-4 ml-2">
-          <%= sprintf('%.2f', total) %>
-          $
+          <%= number_to_currency(total) %>
         </div>
         <div>
           <button class="rounded-lg p-3 text-white bg-black text-base">
