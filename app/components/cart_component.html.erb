@@ -11,8 +11,8 @@
         <div class="text-white">
           <%= render(StateComponent.new(state: @product.state)) %>
         </div>
-        <div>
-          <%= link_to 'Remove it', '#', class: "text-[#076CE0]" %>
+        <div data-controller="shopping-cart" data-action="click->shopping-cart#remove" data-shopping-cart-product_id-value="<%= @product.id %>" class="text-[#076CE0] cursor-pointer">
+          Remove it
         </div>
       </div>
     </div>
@@ -45,8 +45,8 @@
         <div class="text-white">
           <%= render(StateComponent.new(state: @product.state)) %>
         </div>
-        <div>
-          <%= link_to 'Remove it', '#', class: "text-[#076CE0]" %>
+        <div data-controller="shopping-cart" data-action="click->shopping-cart#remove" data-shopping-cart-product_id-value="<%= @product.id %>" class="text-[#076CE0] cursor-pointer">
+          Remove it
         </div>
       </div>
     </div>

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :shopping_cart do
     get 'index', on: :collection
+    delete 'destroy', on: :member
   end
 
   get 'categories/search' => 'categories#search', as: :search
