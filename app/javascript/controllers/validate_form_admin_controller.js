@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="validate-form"
+// Connects to data-controller="validate-form-admin"
 export default class extends Controller {
   connect() {
     this.element.addEventListener("input", this.checkForm);
@@ -57,23 +57,18 @@ export default class extends Controller {
   }
 
   toggleVisibility(event) {
-    if (admin_user_password.type === "password") {
-      this.findVisibilityOff().forEach(img => img.classList.add('hidden'));
-      this.findVisibilityOn().forEach(img => img.classList.remove('hidden'));
-      admin_user_password.type = "text";
-      if (typeof admin_user_password_confirmation !== "undefined") {
-        admin_user_password_confirmation.type = "text";
-      }
-    } else {
-      this.findVisibilityOff().forEach(img => img.classList.remove('hidden'));
-      this.findVisibilityOn().forEach(img => img.classList.add('hidden'));
-      admin_user_password.type = "password";
-      if (typeof admin_user_password_confirmation !== "undefined") {
-        admin_user_password_confirmation.type = "password";
-      }
+    const isCurrentlyPassword = admin_user_password.type === "password";
+    const newType = isCurrentlyPassword ? "text" : "password";
+  
+    this.findVisibilityOff().forEach(img => img.classList.toggle('hidden', isCurrentlyPassword));
+    this.findVisibilityOn().forEach(img => img.classList.toggle('hidden', !isCurrentlyPassword));
+  
+    admin_user_password.type = newType;
+    if (typeof admin_user_password_confirmation !== "undefined") {
+      admin_user_password_confirmation.type = newType;
     }
   }
-   
+  
   showValidationForTarget(target, isValid) {
     let errorMessage = ''
 
