@@ -24,7 +24,15 @@ RSpec.describe ProductsController do
         get :index
 
         expect(response).to have_http_status(:found)
-        expect(response).to redirect_to(new_user_session_path) # Replace with your login path
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when query is blank' do
+      it 'returns without rendering any partial' do
+        get :index
+
+        expect(response.body).not_to include('_search_results')
       end
     end
   end

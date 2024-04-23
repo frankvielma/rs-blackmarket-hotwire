@@ -6,11 +6,11 @@ class ProductsController < ApplicationController
 
   def index
     query = params[:query]
-    products = search_products(params)
-    paginate_products(products)
+    @products = search_products(params)
+    @pagy, @products = paginate_products(@products)
     return if query.blank?
 
-    render_search_results_partial(products, query)
+    render_search_results_partial(@products, query)
   end
 
   def favorite
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def paginate_products(products)
-    @pagy, @products = pagy(products, items: 5) if products.present?
+    @pagy, @products = pagy(products, items: 5)
   end
 
   def render_search_results_partial(products, query)
