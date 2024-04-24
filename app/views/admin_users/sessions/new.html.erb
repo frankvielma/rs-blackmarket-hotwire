@@ -3,7 +3,7 @@
     <div class="pb-5 pt-[40px] md:p-[47px] md:pb-7">
       <%= render LogoComponent.new(title: 'Login', type: 'black') %>
     </div>
-    <%= form_for resource, as: resource_name, url: session_path(resource_name), data: { controller: "validate-form-admin" } do |form| %>
+    <%= form_for resource, as: resource_name, url: session_path(resource_name), data: { controller: "validate-form" } do |form| %>
       <div class="my-4 flex flex-col">
         <%= form.label :email, class: "text-sm md:text-base" %>
         <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "border text-black custom-focus h-[34px] w-auto rounded-md border border-dark-violet ps-3 placeholder:text-base placeholder:text-dark-gray hover:border-hover active:outline-none active:ring-2 active:ring-offset-2 md:h-[44px]", placeholder: "Type your email", type: "email" %>
