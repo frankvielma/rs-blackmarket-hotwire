@@ -23,20 +23,31 @@ export default class extends Controller {
 
   admin_form() {
     if (typeof new_admin_user !== "undefined") {
-      var user_email1 = admin_user_email;
-      var user_password1 = admin_user_password;
-      if (typeof admin_user_password_confirmation !== "undefined") {
-        var user_password_confirmation1 = admin_user_password_confirmation;
-      }
+      var {user_email1, user_password1, user_password_confirmation1} = this.admin_user_form();
     } else {
-      var user_email1 = user_email;
-      var user_password1 = user_password;
-      if (typeof user_password_confirmation !== "undefined") {
-        var user_password_confirmation1 = user_password_confirmation;
-      }
+      var {user_email1, user_password1, user_password_confirmation1} = this.user_form();
     }
     return [user_email1, user_password1, user_password_confirmation1];
   }
+
+  admin_user_form() {
+    let user_email1 = admin_user_email;
+    let user_password1 = admin_user_password;
+    if (typeof admin_user_password_confirmation !== "undefined") {
+      var user_password_confirmation1 = admin_user_password_confirmation;
+    }
+    return {user_email1, user_password1, user_password_confirmation1};
+  }
+
+  user_form() {
+    let user_email1 = user_email;
+    let user_password1 = user_password;
+    if (typeof user_password_confirmation !== "undefined") {
+      var user_password_confirmation1 = user_password_confirmation;
+    }
+    return {user_email1, user_password1, user_password_confirmation1};
+  }
+
 
   validateEmail(user_email1) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
