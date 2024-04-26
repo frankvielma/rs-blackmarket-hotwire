@@ -20,9 +20,7 @@
           <%= number_to_currency(total) %>
         </div>
         <div>
-          <button class="rounded-lg p-2 text-white bg-black text-xs">
-            Go to checkout ->
-          </button>
+          <%= button_to "Go to checkout ->", new_shipping_address_path, class: "rounded-lg p-3 text-white bg-black text-base", method: :get %>
         </div>
       </div>
     </div>
