@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     put ':id/:operation', action: :update
   end
 
+  resource :shipping_address
+
   get 'categories/search' => 'categories#search', as: :search
 
   match '/404', to: 'errors#not_found', via: :all

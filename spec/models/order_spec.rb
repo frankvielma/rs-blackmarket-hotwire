@@ -53,9 +53,9 @@ RSpec.describe Order do
     context 'when order is destroyed' do
       let(:user) { create(:user, password: 'password', password_confirmation: 'password') }
       let!(:order) { create(:order, user_id: user.id, total_price_cents: 1000) }
-      let(:shipping_address) { create(:shipping_address, order:) }
 
       it 'destroys associated shipping addresses' do
+        create(:shipping_address, order:)
         expect { order.destroy }.to change(ShippingAddress, :count).by(-1)
       end
     end
