@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_18_141816) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_26_161508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -283,6 +283,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_141816) do
     t.index ["name"], name: "motor_tags_name_unique_index", unique: true
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "total_price_cents"
+    t.string "total_price_currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -291,6 +299,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_141816) do
     t.integer "unit_price_cents", default: 0
     t.integer "unit_price_currency", default: 0
     t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.string "country"
+    t.string "city"
+    t.string "state"
+    t.string "line1"
+    t.string "line2"
+    t.string "postal_code"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
