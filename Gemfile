@@ -63,7 +63,7 @@ group :test do
   gem 'prosopite', '~> 1.4.2'
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
-  gem 'selenium-webdriver', '~> 4.19.0'
+  gem 'selenium-webdriver', '~> 4.20.1'
   gem 'shoulda-matchers', '~> 6.2'
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'super_diff', '~> 0.11.0'
