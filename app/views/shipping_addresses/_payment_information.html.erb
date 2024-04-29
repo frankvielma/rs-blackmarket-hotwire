@@ -1,0 +1,36 @@
+<div class="text-left pb-8 pt-8">
+  <h2 class="text-xl font-bold mb-2">Payment Information</h2>
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+    <div>
+      <div>
+        <label for="cardNumber" class="text-sm font-medium">Card number *</label>
+      </div>
+      <input id="cardNumber" name="cardNumber" type="text"  placeholder="Card number" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:border-indigo-500">
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-4 text-sm font-medium pt-4 lg:grid-cols-3">
+    Expiration date *
+  </div>
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+    <div>
+      <select id="month" name="month" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400">
+        <option value="">Month</option>
+        <%= options_for_select( (1..12), include_blank: true) %>
+      </select>
+    </div>
+    <div>
+      <select id="year" name="year" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400">
+        <option value="">Year</option>
+        <% (2010..2024).each do |year| %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3">
+    <div>
+      <label for="cvc" class="text-sm font-medium">CVC code *</label>
+      <input id="cvc" name="cvc" type="text" placeholder="CVC" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:border-indigo-500">
+    </div>
+  </div>
+</div>
