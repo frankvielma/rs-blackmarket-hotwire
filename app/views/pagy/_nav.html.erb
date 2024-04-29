@@ -1,9 +1,9 @@
-<% link = pagy_link_proc(pagy) -%>
+<% link = pagy_anchor(pagy) -%>
 <nav class="flex justify-around text-base" role="navigation">
   <div>
     <% if pagy.prev -%>
       <span class="page prev">
-        <%== link.call(pagy.prev, '< Back', 'aria-label="previous"') %>
+        <%== link.call(pagy.prev, '< Back') %>
       </span>
     <% else-%>
       <span class="page prev disabled">
@@ -26,7 +26,7 @@
   <div>
     <% if pagy.next -%>
       <span class="page next">
-        <%== link.call(pagy.next, 'Next >', 'aria-label="next"') %>
+        <%== link.call(pagy.next, 'Next >') %>
       </span>
     <% else -%>
       <span class="page next disabled">
