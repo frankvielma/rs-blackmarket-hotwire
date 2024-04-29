@@ -1,6 +1,37 @@
-<div class="pt-4 mb-4">
+<div class="hidden" id="billingAddress">
+  <div class="text-left pb-8">
+    <h2 class="text-sm font-bold lg:text-xl">Billing address</h2>
+  </div>
+  <div class="grid grid-cols-1 gap-4">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div>
+        <label for="cityBilling" class="block text-sm font-medium text-gray-700">City*</label>
+        <input type="text" id="cityBilling" placeholder="City name" class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-100" required>
+      </div>
+      <div>
+        <label for="countryBilling" class="block text-sm font-medium text-gray-700">Country*</label>
+        <input type="text" id="countryBilling" placeholder="Country" class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-100" required>
+      </div>
+      <div>
+        <label for="postalcodeBilling" class="block text-sm font-medium text-gray-700">Postal code*</label>
+        <input type="text" id="postalcodeBilling" placeholder="Postal Code" class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-100" required>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div>
+        <label for="address1Billing" class="block text-sm font-medium text-gray-700">Address line 1 *</label>
+        <input type="text" id="address1Billing" placeholder="Address line 1" class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-100" required>
+      </div>
+      <div>
+        <label for="address2Billing" class="block text-sm font-medium text-gray-700">Address line 2</label>
+        <input type="text" id="address2Billing" placeholder="Address line 2" class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-100">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pt-6 mb-4">
   <div class="flex items-center">
-    <input id="use-shipping-address" type="checkbox" name="use-shipping-address" checked class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2" />
+    <input data-action="click->shipping#billing" id="use-shipping-address" type="checkbox" name="use-shipping-address" checked class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2" />
     <label for="use-shipping-address" class="ml-2 text-sm font-medium text-gray-700">Use my shipping address as my billing address</label>
   </div>
 </div>
