@@ -31,4 +31,12 @@ export default class extends Controller {
     }
   }
 
+  handleKeyPress(event, url) {
+    const productId = this.productIdValue;
+    if ((event.key === ' ') || (event.key === 'Enter')) {
+      event.preventDefault();
+      this.sendFavoriteRequest(url, { favorite: this.isFavorite });
+    }
+  }
+
 }
