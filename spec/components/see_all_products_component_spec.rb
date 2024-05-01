@@ -3,13 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe SeeAllProductsComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
-
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it 'renders the button' do
+    render_inline(described_class.new)
+    expect(page).to have_link
+    expect(page).to have_text('See all')
+  end
 end
