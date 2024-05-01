@@ -41,6 +41,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
 
+  config.include Devise::Test::ControllerHelpers, type: :component
+  config.before(:each, type: :component) do
+    @request = vc_test_controller.request
+  end
+
   # Form objects specs
   config.define_derived_metadata(file_path: Regexp.new('/spec/forms/')) do |metadata|
     metadata[:type] = :form
