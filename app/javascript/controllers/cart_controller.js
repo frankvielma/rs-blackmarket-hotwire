@@ -1,16 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
+import application_controller from "./application_controller";
 
 // Connects to data-controller="cart"
-export default class extends Controller {
+export default class extends application_controller {
   static values = { product_id: Number };
   static targets = [ "slide" ];
 
   handleKeyPress(event) {
-    const productId = this.productIdValue;
-    if ((event.key === ' ') || (event.key === 'Enter')) {
-      event.preventDefault();
-      this.sendCartRequest(`/products/${productId}/shopping_carts`, { cart: this.isFavorite });
-    }
+    let url = `/products/${productId}/shopping_carts`;
+    super.handleKeyPress(event, url);
   }
 
   togglecart(event) {

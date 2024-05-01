@@ -20,15 +20,12 @@
           <%= number_to_currency(total) %>
         </div>
         <div>
-          <button class="rounded-lg p-2 text-white bg-black text-xs">
-            Go to checkout ->
-          </button>
+          <%= button_to "Go to checkout ->", new_shipping_address_path, class: "rounded-lg p-1 text-white bg-black text-base text-sm", method: :get %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="lg:block hidden mx-auto text-black" data-controller="shopping-cart">
   <div id="carts" class="flex flex-col gap-4 items-center">
     <div class="w-1/2 justify-start bg-white p-8 rounded-xl">
@@ -51,9 +48,9 @@
           <%= number_to_currency(total) %>
         </div>
         <div>
-          <button class="rounded-lg p-3 text-white bg-black text-base">
-            Go to checkout ->
-          </button>
+          <div id="checkout">
+            <%= button_to "Go to checkout ->", new_shipping_address_path, class: "rounded-lg p-3 text-white bg-black text-base", method: :get %>
+          </div>
         </div>
       </div>
     </div>

@@ -1,15 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import application_controller from "./application_controller";
 
 // Connects to data-controller="favorite"
-export default class extends Controller {
+export default class extends application_controller {
   static values = { product_id: Number }
 
   handleKeyPress(event) {
-    const productId = this.productIdValue;
-    if ((event.key === ' ') || (event.key === 'Enter')) {
-      event.preventDefault();
-      this.sendFavoriteRequest(`/products/${productId}/favorite`, { favorite: this.isFavorite });
-    }
+    let url = `/products/${productId}/favorite`;
+    super.handleKeyPress(event, url);
   }
 
   togglefavorite(event) {
