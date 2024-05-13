@@ -1,7 +1,9 @@
 <div class="flex flex-col gap-12 bg-slate-100" >
   <%= render(HeaderComponent.new(featured: true)) %>
-  <%= render(DiscountComponent.new()) %>
-  <%= render(PaymentComponent.new()) %>
-  <%= render(ShipmentComponent.new()) %>
+  <%= turbo_frame_tag "main" do %>
+    <%= render(DiscountComponent.new()) %>
+    <%= render(PaymentComponent.new()) %>
+    <%= render(ShipmentComponent.new()) %>
+  <% end %>
   <%= render(FooterComponent.new()) %>
 </div>

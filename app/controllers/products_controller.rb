@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
     query = params[:query]
     @products = search_products(params)
     @pagy, @products = paginate_products(@products)
-    return if query.blank?
 
     render_search_results_partial(@products, query)
   end
@@ -67,6 +66,10 @@ class ProductsController < ApplicationController
 
   def render_search_results_partial(products, query)
     partial = products.present? ? 'products/search_results' : 'products/empty'
-    render turbo_stream: turbo_stream.update('main', partial:, locals: { products:, query: })
+
+    render turbo_stream: [
+      turbo_stream.update('toggle-shopping-product', ShoppingCartComponent.new),
+      turbo_stream.update('main', partial:, locals: { products:, query: })
+    ]
   end
 end

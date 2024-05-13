@@ -33,7 +33,7 @@ class ShoppingCartController < ApplicationController
   def render_cart(cart_items, total)
     partial = cart_items.present? ? 'shopping_cart/search_results' : 'shopping_cart/empty'
     render turbo_stream: [
-      turbo_stream.replace('toggle-shopping-product', ProductButtonComponent.new),
+      turbo_stream.update('toggle-shopping-product', ProductButtonComponent.new),
       turbo_stream.update('main', partial:, locals: { cart_items:, total: })
     ]
   end
