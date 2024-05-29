@@ -55,7 +55,7 @@ end
 
 group :test do
   gem 'capybara', '~> 3.40'
-  gem 'faker', '~> 3.3'
+  gem 'faker', '~> 3.4'
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
   gem 'parallel_tests', '~> 4.7'
