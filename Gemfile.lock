@@ -306,7 +306,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    newrelic_rpm (9.9.0)
+    newrelic_rpm (9.10.0)
     nio4r (2.7.3)
     nokogiri (1.16.5-aarch64-linux)
       racc (~> 1.4)
@@ -592,7 +592,7 @@ DEPENDENCIES
   lograge (~> 0.14)
   lookbook (>= 2.2.0)
   motor-admin (~> 0.4.26)
-  newrelic_rpm (~> 9.9)
+  newrelic_rpm (~> 9.10)
   oj (~> 3.16)
   pagy (~> 8.4.0)
   parallel_tests (~> 4.7)
