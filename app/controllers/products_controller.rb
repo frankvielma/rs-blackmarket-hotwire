@@ -60,5 +60,4 @@ class ProductsController < ApplicationController
   def paginate_products(products)
     @pagy, @products = pagy(products, items: 5)
   end
-
 end

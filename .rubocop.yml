@@ -144,10 +144,6 @@ Style/SlicingWithRange:
 Style/StringConcatenation:
   Enabled: false
 
-RSpec/Dialect:
-  EnabledMethods:
-    - feature
-    - scenario
 Lint/MissingSuper:
   Exclude:
     - 'app/components/**/*'
