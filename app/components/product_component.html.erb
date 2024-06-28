@@ -6,19 +6,17 @@
       <%= image_tag 'no-image.svg', class: "object-scale-down w-[80%] h-[80%]", alt: 'No image' %>
     <% end %>
   </div>
-  <div class= "flex text-sm pt-2 h-[120px] w-[240px] ml-6">
-    <div class="flex flex-col gap-3">
-      <div class="mt-4 lg:hidden">
-        <%= @product.title.truncate(14) %>
-      </div>
-      <div class="hidden mt-4 lg:block">
-        <%= @product.title.truncate(20) %>
-      </div>
-      <div class="text-white">
-        <%= render(StateComponent.new(state: @product.state)) %>
-      </div>
-      $<%= sprintf('%.2f', @product.price) %>
+  <div class= "flex flex-col text-sm pt-2 h-[120px] w-[240px] ml-6 gap-3">
+    <div class="mt-4 lg:hidden">
+      <%= @product.title.truncate(14) %>
     </div>
+    <div class="hidden mt-4 lg:block">
+      <%= @product.title.truncate(24) %>
+    </div>
+    <div class="text-white">
+      <%= render(StateComponent.new(state: @product.state)) %>
+    </div>
+    $<%= sprintf('%.2f', @product.price) %>
   </div>
   <div class="flex flex-col text-sm pt-2 h-[120px] w-[240px] justify-evenly pr-2">
     <div class="pl-20">
