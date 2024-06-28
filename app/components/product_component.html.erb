@@ -1,6 +1,10 @@
 <div class="flex w-full bg-white justify-evenly font-semibold shadow-xl rounded-lg <%= 'border-b-[1px] border-gray' if @product.id < 5 %>" >
   <div class="h-[120px] w-[240px] flex items-center justify-center bg-white rounded-lg">
-    <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
+    <% if @product.image.present? %>
+      <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
+    <% else %>
+      <%= image_tag 'no-image.svg', class: "object-scale-down w-[80%] h-[80%]", alt: 'No image' %>
+    <% end %>
   </div>
   <div class= "flex text-sm pt-2 h-[120px] w-[240px] ml-6">
     <div class="flex flex-col gap-3">

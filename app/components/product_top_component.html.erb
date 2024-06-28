@@ -4,7 +4,11 @@
     <% Product.featured.each do |product| %>
       <div class="flex flex-col items-center">
         <div class="w-[120px] h-[120px] rounded-t-xl border-b-[1px] border-gray overflow-hidden bg-white flex items-center justify-center shadow-2xl">
-          <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
+          <% if product.image.present? %>
+            <%= image_tag product.image, class: "object-scale-down w-[80%] h-[80%]", alt: product.description %>
+          <% else %>
+            <%= image_tag 'no-image.svg', class: "object-scale-down w-[80%] h-[80%]", alt: 'No image' %>
+          <% end %>
         </div>
         <div class="bg-white text-sm pt-2 shadow-inner">
           <div class="flex gap-3 justify-center">
