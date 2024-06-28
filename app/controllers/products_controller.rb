@@ -5,11 +5,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    query = params[:query]
     @products = search_products(params)
     @pagy, @products = paginate_products(@products)
-
-    render_search_results_partial(@products, query)
   end
 
   def favorite
@@ -64,12 +61,4 @@ class ProductsController < ApplicationController
     @pagy, @products = pagy(products, items: 5)
   end
 
-  def render_search_results_partial(products, query)
-    partial = products.present? ? 'products/search_results' : 'products/empty'
-
-    render turbo_stream: [
-      turbo_stream.update('toggle-shopping-product', ShoppingCartComponent.new),
-      turbo_stream.update('main', partial:, locals: { products:, query: })
-    ]
-  end
 end

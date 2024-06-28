@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="filter"
 export default class extends Controller {
-  static targets = ["category", "submitForm"];
+  static targets = ["category", "submitform"];
 
   toggle() {
     const filter = document.querySelector(".filter-menu");
@@ -25,6 +25,6 @@ export default class extends Controller {
   }
 
   select(event) {
-    this.submitFormTarget.submit();
+    this.submitformTarget.submit();
   }
 }

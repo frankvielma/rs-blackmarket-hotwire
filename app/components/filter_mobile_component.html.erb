@@ -1,6 +1,6 @@
 <div class="filter-menu z-1 hidden text-sm ml-2 mt-4" data-controller="filter">
   <div class="font-bold">Filter by</div>
-  <%= form_with action: products_path, method: :get, class: "flex-grow", data: { target: "filter.submitForm" } do |form| %>
+  <%= form_with url: products_path, method: :get, class: "flex-grow", data: { target: "filter.submitform" } do |form| %>
     <%= render ConditionComponent.new() %>
     <div class="mt-4 flex flex-col gap-2">
       <%= render CategoryComponent.new(type: 'mobile') %>
