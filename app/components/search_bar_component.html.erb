@@ -1,5 +1,5 @@
 <div class="relative container flex w-full text-white">
-  <%= form_with action: products_path, method: :get, class: "flex-grow", data: { controller: "search-products" } do |form| %>
+  <%= form_with url: products_path, method: :get, class: "flex-grow", data: { controller: "search-products" } do |form| %>
     <%= form.text_field :query, id: "query-#{@size}", class: "h-10 w-full flex-grow rounded-md bg-white px-3 py-2 text-black", placeholder: @placeholder, type: :text %>
     <div class="absolute inset-y-0 right-[1rem] flex items-center cursor-pointer">
       <button type="submit">
