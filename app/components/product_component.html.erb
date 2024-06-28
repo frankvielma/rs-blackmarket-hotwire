@@ -1,5 +1,5 @@
-<div class="flex w-full bg-white justify-evenly font-semibold shadow-xl rounded-lg <%= 'border-b-[1px] border-gray' if @product.id < 5 %>" >
-  <div class="h-[120px] w-[240px] flex items-center justify-center bg-white rounded-lg">
+<div class="flex bg-white justify-evenly font-semibold shadow-xl rounded-md <%= 'border-b-[1px] border-gray' if @product.id < 5 %>" >
+  <div class="h-[120px] w-[240px] flex items-center justify-center">
     <% if @product.image.present? %>
       <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
     <% else %>
@@ -8,8 +8,11 @@
   </div>
   <div class= "flex text-sm pt-2 h-[120px] w-[240px] ml-6">
     <div class="flex flex-col gap-3">
-      <div class="flex mt-4">
-        <%= @product.title.truncate(16) %>
+      <div class="mt-4 lg:hidden">
+        <%= @product.title.truncate(14) %>
+      </div>
+      <div class="hidden mt-4 lg:block">
+        <%= @product.title.truncate(20) %>
       </div>
       <div class="text-white">
         <%= render(StateComponent.new(state: @product.state)) %>
