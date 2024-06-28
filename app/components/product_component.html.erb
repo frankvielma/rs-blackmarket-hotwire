@@ -1,10 +1,6 @@
 <div class="flex bg-white justify-evenly font-semibold shadow-xl rounded-md <%= 'border-b-[1px] border-gray' if @product.id < 5 %>" >
   <div class="h-[120px] w-[240px] flex items-center justify-center">
-    <% if @product.image.present? %>
-      <%= image_tag @product.image, class: "object-scale-down w-[80%] h-[80%]", alt: @product.description %>
-    <% else %>
-      <%= image_tag 'no-image.svg', class: "object-scale-down w-[80%] h-[80%]", alt: 'No image' %>
-    <% end %>
+    <%= image_tag(@product.image.present?? @product.image : 'no-image.svg', class: 'object-scale-down w-[80%] h-[80%]', alt: @product.description || 'No image') %>
   </div>
   <div class= "flex flex-col text-sm pt-2 h-[120px] w-[240px] ml-6 gap-3">
     <div class="mt-4 lg:hidden">
