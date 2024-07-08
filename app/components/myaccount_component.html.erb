@@ -4,9 +4,7 @@
     <%= image_tag "arrow_down.svg", id: "arrowDown" %>
     <%= image_tag "arrow_up.svg", id: "arrowUp", class: "hidden" %>
   </div>
-  <div id="dropdownMenu" class="hidden w-40 text-base absolute top-50 rounded-md border-white bg-black text-white">
-    <div class="py-2 px-4 cursor-pointer hover:bg-gray-100 border-gray border-b-[1px] hover:bg-hover" >
-      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
-    </div>
+  <div id="dropdownMenu" class="custom-focus hidden w-40 text-base absolute top-50 rounded-md bg-black text-white py-2 px-4 cursor-pointer hover:bg-gray-100 hover:bg-hover active:bg-hover active:outline-none active:ring-2 active:ring-offset-2">
+    <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
   </div>
 </div>
