@@ -23,7 +23,7 @@ gem 'stimulus-rails', '~> 1.3.3'
 gem 'tailwindcss-rails', '~> 2.6'
 gem 'turbo-rails', '~> 2.0.5'
 gem 'view_component', '~> 3.12.1'
-gem 'yaaf', '~> 2.2'
+gem 'yaaf', '~> 3.0'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
