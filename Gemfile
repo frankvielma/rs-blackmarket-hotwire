@@ -64,7 +64,7 @@ group :test do
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
   gem 'selenium-webdriver', '~> 4.23.0'
-  gem 'shoulda-matchers', '~> 6.3'
+  gem 'shoulda-matchers', '~> 6.4'
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'super_diff', '~> 0.12.1'
   gem 'webmock', '~> 3.23'
