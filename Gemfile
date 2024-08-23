@@ -36,7 +36,7 @@ end
 group :development do
   gem 'actioncable', '~> 7.1.3'
   gem 'better_errors', '~> 2.10'
-  gem 'brakeman', '~> 6.1'
+  gem 'brakeman', '~> 6.2'
   gem 'i18n-tasks', '~> 1.0.14'
   gem 'letter_opener', '~> 1.9'
   gem 'listen', '~> 3.8'
