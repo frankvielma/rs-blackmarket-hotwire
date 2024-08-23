@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby '~> 3.3.1'
 
-gem 'rails', '~> 7.1.3'
+gem 'rails', '~> 7.1.4'
 
 gem 'bootsnap', '~> 1.18'
 gem 'devise', '~> 4.9.4'
