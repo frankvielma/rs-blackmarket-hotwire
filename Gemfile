@@ -34,7 +34,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'actioncable', '~> 7.1.3'
+  gem 'actioncable', '~> 7.1.4'
   gem 'better_errors', '~> 2.10'
   gem 'brakeman', '~> 6.1'
   gem 'i18n-tasks', '~> 1.0.14'
