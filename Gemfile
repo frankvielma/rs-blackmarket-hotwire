@@ -21,7 +21,7 @@ gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails', '~> 3.5.2'
 gem 'stimulus-rails', '~> 1.3.4'
 gem 'tailwindcss-rails', '~> 2.7'
-gem 'turbo-rails', '~> 2.0.6'
+gem 'turbo-rails', '~> 2.0.7'
 gem 'view_component', '~> 3.14.0'
 gem 'yaaf', '~> 3.0'
 
