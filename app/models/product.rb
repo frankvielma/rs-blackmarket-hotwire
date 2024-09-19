@@ -16,8 +16,8 @@
 #  updated_at          :datetime         not null
 #
 class Product < ApplicationRecord
-  enum unit_price_currency: { USD: 0, EUR: 1, BTC: 2 }
-  enum state: { used: 0, is_new: 1, restored: 2 }
+  enum :unit_price_currency, { USD: 0, EUR: 1, BTC: 2 }
+  enum :state, { used: 0, is_new: 1, restored: 2 }
 
   validates :title, :description, :unit_price_cents, :unit_price_currency, presence: true
   validates :stock, numericality: { greater_than_or_equal_to: 0 }
