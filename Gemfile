@@ -61,7 +61,7 @@ group :test do
   gem 'parallel_tests', '~> 4.7'
   gem 'pg_query', '~> 5.1'
   gem 'prosopite', '~> 1.4'
-  gem 'rspec-rails', '~> 6.1'
+  gem 'rspec-rails', '~> 7.0'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
   gem 'selenium-webdriver', '~> 4.24'
   gem 'shoulda-matchers', '~> 6.4'
