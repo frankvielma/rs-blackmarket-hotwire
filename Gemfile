@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby '~> 3.3.1'
 
-gem 'rails', '~> 7.1.4'
+gem 'rails', '~> 7.2.1'
 
 gem 'bootsnap', '~> 1.18'
 gem 'devise', '~> 4.9.4'
@@ -27,14 +27,14 @@ gem 'yaaf', '~> 3.0'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
-  gem 'dotenv-rails', '~> 3.1.2'
+  gem 'dotenv-rails', '~> 3.1.4'
   gem 'factory_bot_rails', '~> 6.4'
   gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'pry-rails', '~> 0.3.11'
 end
 
 group :development do
-  gem 'actioncable', '~> 7.1.4'
+  gem 'actioncable', '~> 7.2.1'
   gem 'better_errors', '~> 2.10'
   gem 'brakeman', '~> 6.2'
   gem 'i18n-tasks', '~> 1.0.14'
