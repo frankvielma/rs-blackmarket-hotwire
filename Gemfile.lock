@@ -551,7 +551,7 @@ GEM
     unicode-display_width (2.6.0)
     uri (0.13.1)
     useragent (0.16.10)
-    view_component (3.14.0)
+    view_component (3.15.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -644,7 +644,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 2.7)
   turbo-rails (~> 2.0)
   uglifier (~> 4.2)
-  view_component (~> 3.14)
+  view_component (~> 3.15)
   webmock (~> 3.23)
   yaaf (~> 3.0)
 
