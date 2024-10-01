@@ -67,7 +67,7 @@ group :test do
   gem 'shoulda-matchers', '~> 6.4'
   gem 'simplecov', '~> 0.22', require: false
   gem 'super_diff', '~> 0.13'
-  gem 'webmock', '~> 3.23'
+  gem 'webmock', '~> 3.24'
 end
 
 group :assets do
