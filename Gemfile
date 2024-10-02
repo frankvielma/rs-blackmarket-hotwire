@@ -49,7 +49,7 @@ group :development do
   gem 'rubocop-performance', '~> 1.22', require: false
   gem 'rubocop-rails', '~> 2.26', require: false
   gem 'rubocop-rake', '~> 0.6', require: false
-  gem 'rubocop-rspec', '~> 3.0', require: false
+  gem 'rubocop-rspec', '~> 3.1', require: false
   gem 'spring', '~> 4.2'
 end
 
