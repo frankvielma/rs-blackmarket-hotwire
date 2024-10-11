@@ -311,7 +311,7 @@ GEM
       csv (>= 3.0)
       fugit (~> 1.0)
       rails (>= 5.2)
-    msgpack (1.7.2)
+    msgpack (1.7.3)
     net-http (0.4.1)
       uri
     net-imap (0.4.16)
@@ -452,7 +452,7 @@ GEM
     rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.1)
+    rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-rails (7.0.1)
@@ -490,7 +490,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (3.0.5)
+    rubocop-rspec (3.1.0)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
@@ -573,7 +573,7 @@ GEM
       activemodel (>= 5.2)
       activerecord (>= 5.2)
     yard (0.9.37)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   aarch64-linux
@@ -634,7 +634,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.22)
   rubocop-rails (~> 2.26)
   rubocop-rake (~> 0.6)
-  rubocop-rspec (~> 3.0)
+  rubocop-rspec (~> 3.1)
   selenium-webdriver (~> 4.25)
   shoulda-matchers (~> 6.4)
   simplecov (~> 0.22)
