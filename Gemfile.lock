@@ -588,7 +588,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  actioncable (~> 7.1)
+  actioncable (~> 7.2)
   annotate (~> 3.2, >= 3.0.3)
   better_errors (~> 2.10)
   bootsnap (~> 1.18)
