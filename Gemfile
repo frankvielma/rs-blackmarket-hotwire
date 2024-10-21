@@ -22,7 +22,7 @@ gem 'sprockets-rails', '~> 3.5'
 gem 'stimulus-rails', '~> 1.3'
 gem 'tailwindcss-rails', '~> 3.0'
 gem 'turbo-rails', '~> 2.0'
-gem 'view_component', '~> 3.17'
+gem 'view_component', '~> 3.18'
 gem 'yaaf', '~> 3.0'
 
 group :development, :test do
